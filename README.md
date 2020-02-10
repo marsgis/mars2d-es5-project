@@ -1,8 +1,7 @@
 # Mars2D项目模版 - ES5传统版（含widget模块）
-   传统模式Web前端技术栈下的一个具备widget基础功能的mars2d应用的项目模版
-
-Mars2D更多介绍请点击： [http://leaflet.marsgis.cn](http://leaflet.marsgis.cn)
-
+   传统模式Web前端技术栈下的一个具备widget基础功能的[Mars2D](http://leaflet.marsgis.cn)应用的项目模版
+ 
+ 
 ## 使用说明
  在任意开发编辑器（如vscode等）或http服务器(如node、nginx、tomcat、IIS等)下直接运行浏览index.html即可
 
