@@ -5,6 +5,9 @@
 ## 使用说明
  在任意开发编辑器（如vscode等）或http服务器(如node、nginx、tomcat、IIS等)下直接运行浏览index.html即可
 
+### 压缩及混淆
+ build整站压缩及混淆：[https://github.com/muyao1987/web-dist](https://github.com/muyao1987/web-dist)
+
 
 ## 运行效果
  demo系统： [http://leaflet.marsgis.cn/demo.html](http://leaflet.marsgis.cn/demo.html)
@@ -19,4 +22,4 @@
  
 ## 版权说明
  本项目主要是为了展示Mars2D的项目应用，仅限大家学习之用，如需用于商业项目，请联系购买[火星科技](http://leaflet.marsgis.cn)SDK授权。
- 并且Mars2D-SDK类库并未开源（即libs/leaflet-mars/）,内部有作者公司logo及时效限制。
+ 并且Mars2D-SDK类库并未开源（即`libs/leaflet-mars/`）,内部有作者公司logo及时效限制。
