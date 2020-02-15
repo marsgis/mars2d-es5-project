@@ -1,4 +1,4 @@
-# Mars2D基础项目模版 - ES5传统版（含widget模块）
+# Mars2D基础项目模版（含widget模块） - ES5传统版
  传统模式Web前端技术栈下的一个具备widget基础功能的[Mars2D](http://leaflet.marsgis.cn)应用的项目模版
     
  其他技术栈，请参考 [Mars2D开源导航](https://github.com/marsgis/MarsGIS-for-Leaflet)
