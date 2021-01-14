@@ -25,16 +25,16 @@ function initMap() {
         url: configfile,
         timeout: 0,
         success: function (data) {
-            haoutil.loading.hide(); 
- 
+            haoutil.loading.hide();
+
             //构造地图
             map = L.mars.createMap({
                 id: "map",
                 data: data.map,
-                serverURL: data.serverURL, 
-                layerToMap:layerToMap
+                serverURL: data.serverURL,
+                layerToMap: layerToMap
             });
- 
+
             //如果有xyz传参，进行定位 
             if (haoutil.isutil.isNotNull(request.x)
                 && haoutil.isutil.isNotNull(request.y)
