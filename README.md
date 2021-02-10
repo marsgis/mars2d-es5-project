@@ -1,5 +1,5 @@
 # Mars2D基础项目模版（含widget模块） - ES5传统版
- 传统模式Web前端技术栈下的一个具备widget基础功能的[Mars2D](http://leaflet.marsgis.cn)应用的项目模版
+ 传统模式Web前端技术栈下的一个具备widget基础功能的[Mars2D](http://mars2d.cn)应用的项目模版
     
  其他技术栈，请参考 [Mars2D开源导航](https://github.com/marsgis/mars2d)
  
@@ -13,13 +13,13 @@
 
 
 ## 运行效果
- [在线Demo1](http://leaflet.marsgis.cn/project/simple-es5-widget/index.html) 、
- [在线Demo2](http://leaflet.marsgis.cn/project/simple-es5-widget/index.html?config=config/gcj.json)  、
- [在线Demo3](http://leaflet.marsgis.cn/project/simple-es5-widget/index.html?config=config/baidu.json) 
+ [在线Demo1](http://mars2d.cn/project/simple-es5-widget/index.html) 、
+ [在线Demo2](http://mars2d.cn/project/simple-es5-widget/index.html?config=config/gcj.json)  、
+ [在线Demo3](http://mars2d.cn/project/simple-es5-widget/index.html?config=config/baidu.json) 
 
- ![image](http://leaflet.marsgis.cn/project/img/simple-es5-widget.jpg)
+ ![image](http://mars2d.cn/project/img/simple-es5-widget.jpg)
  
- [更多项目体验](http://leaflet.marsgis.cn/project.html)
+ [更多项目体验](http://mars2d.cn/project.html)
 
  
 ## 项目说明
@@ -29,4 +29,4 @@
  
 ## 版权说明
   本项目主要是为了展示Mars2D的项目应用，Mars2D-SDK类库目前并未开源（即`libs/leafletjs/mars2d/`）,但支持大家免费学习及使用。
-  如需要平台功能示例源码及相关文档手册，或用于商业项目，请联系购买[火星科技](http://leaflet.marsgis.cn)SDK授权。
+  如需要平台功能示例源码及相关文档手册，或用于商业项目，请联系购买[火星科技](http://mars2d.cn)SDK授权。
