@@ -1,7 +1,7 @@
 ﻿{
   "map": {
     "zoom": 13,
-    "center": { "x": 117.240601, "y": 31.827107 },
+    "center": { "lng": 117.240601, "lat": 31.827107 },
     "minZoom": 3,
     "maxZoom": 18,
     "centerAutoLevel": 15,
@@ -21,6 +21,7 @@
         "type": "group"
       },
       {
+        "id": 2021,
         "pid": 10,
         "name": "天地图电子",
         "icon": "img/basemaps/tianditumap.png",

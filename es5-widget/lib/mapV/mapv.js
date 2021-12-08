@@ -8456,8 +8456,8 @@ var MapVRenderer$1 = function (_BaseLayer) {
                 } else n.clear(n.COLOR_BUFFER_BIT);
                 var a = {
                     transferCoordinate: function transferCoordinate(t) {
-                        var i = Leaflet.Cartesian3.fromDegrees(t[0], t[1]),
-                            n = Leaflet.SceneTransforms.wgs84ToWindowCoordinates(e, i);
+                        var i = Cesium.Cartesian3.fromDegrees(t[0], t[1]),
+                            n = Cesium.SceneTransforms.wgs84ToWindowCoordinates(e, i);
                         return void 0 == n ? [-1, -1] : [n.x, n.y];
                     }
                 };
@@ -8467,7 +8467,7 @@ var MapVRenderer$1 = function (_BaseLayer) {
                 });
                 var c = this.dataSet.get(a);
                 this.processData(c), "m" == this.options.unit && this.options.size, this.options._size = this.options.size;
-                var h = Leaflet.SceneTransforms.wgs84ToWindowCoordinates(e, Leaflet.Cartesian3.fromDegrees(0, 0));
+                var h = Cesium.SceneTransforms.wgs84ToWindowCoordinates(e, Cesium.Cartesian3.fromDegrees(0, 0));
                 this.drawContext(n, new DataSet(c), this.options, h), this.options.updateCallback && this.options.updateCallback(t);
             }
         }
@@ -8528,9 +8528,9 @@ var MapVRenderer$1 = function (_BaseLayer) {
 }(BaseLayer);
 
 var mapVLayer$2;
-if (typeof Leaflet !== 'undefined') {
+if (typeof Cesium !== 'undefined') {
     var defIndex = 0;
-    var r = Leaflet;
+    var r = Cesium;
 
     var MapVLayer$1 = function () {
         /**
@@ -8580,14 +8580,14 @@ if (typeof Leaflet !== 'undefined') {
                 this.scene.camera.moveStart.addEventListener(this.innerMoveStart, this);
                 this.scene.camera.moveEnd.addEventListener(this.innerMoveEnd, this);
 
-                var t = new Leaflet.ScreenSpaceEventHandler(this.scene.canvas);
+                var t = new Cesium.ScreenSpaceEventHandler(this.scene.canvas);
 
                 t.setInputAction(function (t) {
                     that.innerMoveEnd();
-                }, Leaflet.ScreenSpaceEventType.LEFT_UP);
+                }, Cesium.ScreenSpaceEventType.LEFT_UP);
                 t.setInputAction(function (t) {
                     that.innerMoveEnd();
-                }, Leaflet.ScreenSpaceEventType.MIDDLE_UP);
+                }, Cesium.ScreenSpaceEventType.MIDDLE_UP);
                 this.handler = t;
             }
         }, {

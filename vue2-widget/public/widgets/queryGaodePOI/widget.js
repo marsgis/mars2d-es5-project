@@ -69,16 +69,16 @@
         return;
       }
       var that = this;
-      var img = $("#map-querybar img");
+      var img = $("#mars2dContainer-querybar img");
       img.each((index, item) => {
         $(item).attr("src", this.path + $(item).attr("src"));
       });
 
       if (this.config.position) {
-        $("#map-querybar").css(this.config.position);
+        $("#mars2dContainer-querybar").css(this.config.position);
       }
       if (this.config.style) {
-        $("#map-querybar").css(this.config.style);
+        $("#mars2dContainer-querybar").css(this.config.style);
       }
 
       // 搜索框

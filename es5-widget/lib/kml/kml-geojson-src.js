@@ -5988,11 +5988,11 @@ function toGeoJSON(doc) {
     var extension = getExtension(doc);
 
     if (extension === 'kml') {
-      return Leaflet.Resource.fetchXML(doc).then(function (kmlDom) {
+      return Cesium.Resource.fetchXML(doc).then(function (kmlDom) {
         return Object(kmlToGeoJSON["a" /* kmlToGeoJSON */])(kmlDom);
       });
     } else if (extension === 'kmz') {
-      return Leaflet.Resource.fetchBlob(doc).then(function (xml) {
+      return Cesium.Resource.fetchBlob(doc).then(function (xml) {
         return src_getKmlDom(xml);
       }).then(function (kmlDom) {
         return Object(kmlToGeoJSON["a" /* kmlToGeoJSON */])(kmlDom);

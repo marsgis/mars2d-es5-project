@@ -280,7 +280,7 @@ var possibleConstructorReturn = function (self, call) {
  *     ]
  * }
  * @param {Object} [options]   Available options:
- *
+ * 
  */
 function DataSet(data, options) {
     Event.bind(this)();
@@ -926,7 +926,7 @@ Intensity.prototype.getImageData = function (value) {
 };
 
 /**
- * @param Number value
+ * @param Number value 
  * @param Number max of value
  * @param Number max of size
  * @param Object other options
@@ -1180,7 +1180,7 @@ var drawGrid = {
 
         var size = options._size || options.size || 50;
 
-        // 后端传入数据为网格数据时，传入enableCluster为false，前端不进行删格化操作，直接画方格
+        // 后端传入数据为网格数据时，传入enableCluster为false，前端不进行删格化操作，直接画方格	
         var enableCluster = 'enableCluster' in options ? options.enableCluster : true;
 
         var offset = options.offset || {
@@ -2414,7 +2414,7 @@ var curve = {
   getPoints: getCurvePoints
 };
 
-/*
+/* 
 FDEB algorithm implementation [www.win.tue.nl/~dholten/papers/forcebundles_eurovis.pdf].
 
 Author:  (github.com/upphiminn)
@@ -2828,7 +2828,7 @@ var ForceEdgeBundling = function ForceEdgeBundling() {
 /**
  * Category
  * @param {Object} splitList:
- *   {
+ *   { 
  *       other: 1,
  *       1: 2,
  *       2: 3,
@@ -3034,7 +3034,7 @@ var MapHelper = function () {
  *
  * @author nikai (@胖嘟嘟的骨头, nikai@baidu.com)
  *
- * @param
+ * @param 
  * {
  *     map 地图实例对象
  * }
@@ -8456,8 +8456,8 @@ var MapVRenderer$1 = function (_BaseLayer) {
                 } else n.clear(n.COLOR_BUFFER_BIT);
                 var a = {
                     transferCoordinate: function transferCoordinate(t) {
-                        var i = Leaflet.Cartesian3.fromDegrees(t[0], t[1]),
-                            n = Leaflet.SceneTransforms.wgs84ToWindowCoordinates(e, i);
+                        var i = Cesium.Cartesian3.fromDegrees(t[0], t[1]),
+                            n = Cesium.SceneTransforms.wgs84ToWindowCoordinates(e, i);
                         return void 0 == n ? [-1, -1] : [n.x, n.y];
                     }
                 };
@@ -8467,7 +8467,7 @@ var MapVRenderer$1 = function (_BaseLayer) {
                 });
                 var c = this.dataSet.get(a);
                 this.processData(c), "m" == this.options.unit && this.options.size, this.options._size = this.options.size;
-                var h = Leaflet.SceneTransforms.wgs84ToWindowCoordinates(e, Leaflet.Cartesian3.fromDegrees(0, 0));
+                var h = Cesium.SceneTransforms.wgs84ToWindowCoordinates(e, Cesium.Cartesian3.fromDegrees(0, 0));
                 this.drawContext(n, new DataSet(c), this.options, h), this.options.updateCallback && this.options.updateCallback(t);
             }
         }
@@ -8528,9 +8528,9 @@ var MapVRenderer$1 = function (_BaseLayer) {
 }(BaseLayer);
 
 var mapVLayer$2;
-if (typeof Leaflet !== 'undefined') {
+if (typeof Cesium !== 'undefined') {
     var defIndex = 0;
-    var r = Leaflet;
+    var r = Cesium;
 
     var MapVLayer$1 = function () {
         /**
@@ -8580,14 +8580,14 @@ if (typeof Leaflet !== 'undefined') {
                 this.scene.camera.moveStart.addEventListener(this.innerMoveStart, this);
                 this.scene.camera.moveEnd.addEventListener(this.innerMoveEnd, this);
 
-                var t = new Leaflet.ScreenSpaceEventHandler(this.scene.canvas);
+                var t = new Cesium.ScreenSpaceEventHandler(this.scene.canvas);
 
                 t.setInputAction(function (t) {
                     that.innerMoveEnd();
-                }, Leaflet.ScreenSpaceEventType.LEFT_UP);
+                }, Cesium.ScreenSpaceEventType.LEFT_UP);
                 t.setInputAction(function (t) {
                     that.innerMoveEnd();
-                }, Leaflet.ScreenSpaceEventType.MIDDLE_UP);
+                }, Cesium.ScreenSpaceEventType.MIDDLE_UP);
                 this.handler = t;
             }
         }, {
