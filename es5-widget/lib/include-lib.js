@@ -30,6 +30,10 @@ var configLibs = {
     "mars2d/plugins/widget/mars2d-widget.css",
     "mars2d/plugins/widget/mars2d-widget.js"
   ],
+  //////////////////////////leaflet第3方插件////////////////////////
+  'leaflet-sideBySide': [
+    "mars2d/thirdParty/sideBySide/leaflet-side-by-side.min.js",
+  ],
 
   //////////////////////////其他地图渲染相关库////////////////////////
   'turf': [
@@ -162,9 +166,6 @@ var configLibs = {
   'font-awesome': [
     "fonts/font-awesome/css/font-awesome.min.css",
   ],
-  'font-marsgis': [
-    "fonts/marsgis/iconfont.css",
-  ],
   'web-icons': [
     "fonts/web-icons/web-icons.css",
   ],
@@ -237,6 +238,7 @@ var configLibs = {
         continue
       }
       keys[key] = true
+
 
       inputLibs(configLibs[key], libpath)
     }

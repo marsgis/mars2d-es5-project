@@ -52,7 +52,7 @@ function _getNodeConfig(layer) {
 
   var item = layer.options;
 
-  if (!item.name || item.name == "未命名") {
+  if (!item.name) {
     console.log("未命名图层不加入图层管理", layer);
     return;
   }
@@ -155,7 +155,7 @@ function treeOverlays_onDblClick(event, treeId, treeNode) {
     return;
   }
   var layer = layersObj[treeNode.uuid];
-  if (layer && layer.isAdded) {
+  if (layer && layer.isAdded && layer.flyTo) {
     layer.flyTo();
   }
 }

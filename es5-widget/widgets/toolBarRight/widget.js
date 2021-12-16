@@ -22,6 +22,7 @@
           icon: "fa fa-cubes",
           children: [
             { name: "图上测量", icon: "fa fa-calculator", widget: "widgets/measure/widget.js" },
+
             { name: "坐标定位", icon: "fa fa-map-pin", widget: "widgets/centerXY/widget.js" },
             
           ],

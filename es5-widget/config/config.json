@@ -46,9 +46,21 @@
         "pid": 10,
         "name": "天地图卫星",
         "icon": "img/basemaps/tiandituimage.png",
-        "type": "tdt",
-        "layer": "img",
-        "key": ["ad5bee3fe473a639887fa9d57a670c6e"]
+        "type": "group",
+        "layers": [
+          {
+            "name": "底图",
+            "type": "tdt",
+            "layer": "img_d",
+            "key": ["ad5bee3fe473a639887fa9d57a670c6e"]
+          },
+          {
+            "name": "注记",
+            "type": "tdt",
+            "layer": "img_z",
+            "key": ["ad5bee3fe473a639887fa9d57a670c6e"]
+          }
+        ]
       },
       {
         "pid": 10,
@@ -69,6 +81,32 @@
         "icon": "img/basemaps/bingmap.png"
       },
       {
+        "id": 2021,
+        "pid": 10,
+        "name": "高德地图",
+        "type": "gaode",
+        "layer": "vec",
+        "icon": "img/basemaps/bingmap.png"
+      },
+      {
+        "pid": 10,
+        "name": "高德卫星",
+        "type": "group",
+        "icon": "img/basemaps/googleimage.png",
+        "layers": [
+          {
+            "name": "底图",
+            "type": "gaode",
+            "layer": "img_d"
+          },
+          {
+            "name": "注记",
+            "type": "gaode",
+            "layer": "img_z"
+          }
+        ]
+      },
+      {
         "pid": 10,
         "name": "ArcGIS地图",
         "type": "tile",
@@ -85,33 +123,19 @@
       },
       {
         "pid": 10,
-        "name": "高德地图",
-        "type": "gaode",
-        "layer": "vec",
-        "icon": "img/basemaps/bingmap.png"
+        "name": "mapbox深色地图",
+        "type": "mapbox",
+        "username": "marsgis",
+        "styleId": "cki0a2mtc2vyo1bqu76p8ks8m",
+        "icon": "img/basemaps/bd-c-light.png"
       },
       {
         "pid": 10,
-        "name": "高德卫星",
-        "type": "gaode",
-        "layer": "img",
+        "name": "mapbox影像图",
+        "type": "mapbox",
+        "username": "marsgis",
+        "styleId": "cki0adkar2b0e19mv9tpiewld",
         "icon": "img/basemaps/bingimage.png"
-      },
-      {
-        "pid": 10,
-        "name": "谷歌地图",
-        "type": "google",
-        "layer": "vec",
-        "chinaCRS": "GCJ02",
-        "icon": "img/basemaps/googlemap.png"
-      },
-      {
-        "pid": 10,
-        "name": "谷歌卫星",
-        "type": "google",
-        "layer": "img",
-        "chinaCRS": "GCJ02",
-        "icon": "img/basemaps/googleimage.png"
       },
       {
         "pid": 10,
