@@ -2,6 +2,7 @@
 node_modules
 /dist 
 mars2d-*src.*
+!mars2d-widget-src.*
 
 # local env files
 .env.local
