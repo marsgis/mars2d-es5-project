@@ -68,6 +68,14 @@
       "css": {
         "max-width": "300px"
       },
+      "windowOptions": {
+        "position": {
+          "top": 50,
+          "bottom": 100,
+          "right": 10
+        },
+        "maxmin": true
+      },
       "autoDisable": false,
       "disableOther": false
     },

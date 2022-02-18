@@ -9,7 +9,6 @@ import Vue from 'vue'
 // import * as mars2d from 'mars2d'
 // import 'mars2d/dist/mars2d.css'
 
-
 // 为了方便使用,绑定到原型链，在其他vue文件，直接 this.mars2d 来使用
 Vue.prototype.mars2d = window.mars2d
 Vue.prototype.L = window.L
@@ -31,11 +30,10 @@ export default {
     options: Object
   },
 
-  mounted () {
-    mars2d.axios
-      .get(this.url)
-      .then((response) => {
-        let options = response.data.map
+  mounted() {
+    mars2d.Util.fetchJson({ url: this.url })
+      .then(function (data) {
+        let options = data.mars2d
         // 构建地图
         this.initMars2D({
           ...options,
@@ -47,13 +45,13 @@ export default {
       })
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     this[`map${this.mapKey}`].destroy()
     delete this[`map${this.mapKey}`]
   },
 
   methods: {
-    initMars2D (mapOptions) {
+    initMars2D(mapOptions) {
       if (this[`map${this.mapKey}`]) {
         this[`map${this.mapKey}`].destroy()
       }
@@ -66,10 +64,8 @@ export default {
       console.log('>>>>> 2D地图创建成功 >>>>', map)
 
       // widget处理
-      mars2d.axios
-        .get(this.widgetUrl)
-        .then((response) => {
-          let options = response.data
+      mars2d.Util.fetchJson({ url: this.widgetUrl })
+        .then(function (options) {
           this.initStaticWidget(map, options)
         })
         .catch(function (error) {
@@ -81,14 +77,14 @@ export default {
     },
 
     // 初始化外部静态widget功能（兼容使用传统模式开发的一些widget）
-    initStaticWidget (map, widget) {
+    initStaticWidget(map, widget) {
       mars2d.widget.init(map, widget, window.basePathUrl || '/')
     }
   }
 }
 </script>
 
-<style >
+<style>
 .mars2d-container {
   position: absolute;
   left: 0;

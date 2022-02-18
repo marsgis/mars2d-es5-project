@@ -1,47 +1,338 @@
-<p align="center">
-<img src="https://cdn.jsdelivr.net/gh/muyao1987/cdn/mars2d.cn/logo.png" width="300px" />
-</p>
+# Mars3D基础项目系统 - ES5传统版（widget模块）
 
-<p align="center">基于 原生JS下widget模块 的 Mars2D🌎基础项目模板</p>
-
-<p align="center">
-<a target="_black" href="https://github.com/marsgis/mars2d">
-<img alt="GitHub stars" src="https://img.shields.io/github/stars/marsgis/mars2d?style=flat&logo=github">
-</a>
-<a target="_black" href="https://www.npmjs.com/package/mars2d">
-<img alt="Npm downloads" src="https://img.shields.io/npm/dt/mars2d?style=flat&logo=npm">
-</a>
-<a target="_black" href="https://www.npmjs.com/package/mars2d">
-<img alt="Npm version" src="https://img.shields.io/npm/v/mars2d.svg?style=flat&logo=npm&label=version"/>
-</a>
-</p>
-
- 
-  传统模式Web前端技术栈下的一个具备widget基础功能的[Mars2D](http://mars2d.cn)应用的三维地球项目模版
+   传统模式Web前端技术栈下的一个具备widget基础功能的[Mars3D](http://mars3d.cn)应用的三维地球项目模版
  
  
- ## 项目说明
- 该项目与 Mars2D基础项目 的目录和文件完全相同，这是Mars2D基础项目的简化开源版本，可以直接复制到该目录下进行更新。
+## 项目介绍
 
+这是一个基于传统模式Web前端技术栈下的一个具备widget基础功能的[Mars2D](http://mars2d.cn)应用的二维地图项目模版，我们称之为“基础项目”。
+
+[基础项目 (widget方式)](http://mars2d.cn/project/jcxm/index.html)是我们已经开发完成，并多年来应用于无数项目，归纳总结的一个基础的项目模版，包含常用基础地图功能，可在该基础项目上快速开发搭建新项目。
+电子沙盘、综合态势等系统代码内部结构和基础项目类同，只是在widget功能数量和样式上有所不同。
+
+ ![image](https://cdn.jsdelivr.net/gh/muyao1987/cdn/marsgis.cn/img/mars2d/project1.jpg)
 
 ### 使用说明
  在任意开发编辑器（如vscode等）或http服务器(如node、nginx、tomcat、IIS等)下直接运行浏览index.html即可
 
-### 下载最新lib
-从[http://mars2d.cn/download](http://mars2d.cn/download)下载最新mars2d类库后覆盖至`lib/`目录下即可。
+### 运行效果 
+ [在线Demo](http://mars2d.cn/project/jcxm/)  
 
+ ![image](https://cdn.jsdelivr.net/gh/muyao1987/cdn/mars2d.cn/xm/jcxm/1.jpg)
+
+### 下载最新lib
+ 建议从[http://mars2d.cn/download.html](http://mars2d.cn/download.html)下载最新mars2d类库后覆盖至`lib/`目录下即可。
 
 ### 压缩及混淆
  build整站压缩及混淆：[https://github.com/muyao1987/web-dist](https://github.com/muyao1987/web-dist)
 
 
 
+## 1. widget模块化架构说明
+widget模块化设计方式是我们在2016年设计的一种基于传统JS的模块化设计架构。设计思想主要是借鉴了gis行业的arcgis flexviewer和jsviewer，也借鉴了前端行业的React和Vue。当前最流行和通用的方式是整个项目用Vue、React或angular下开发最佳，用现代化的技术栈来做开发。 
 
-### 运行效果 
- [在线Demo](http://mars2d.cn/project/jcxm/)  
+### 1.1 使用widget的理由
+目前还保留widget模块化的方式，是因为：
+- 实用性，主要考虑到该方式使用多年，已在大量项目中使用, 积累比较多，并且成熟稳定；
+- 并且当前还是有很大一部分公司项目还是传统方式开发的；
+- widget模块也兼容vue、react、 angular下通过静态资源方式来使用。
 
- ![image](https://cdn.jsdelivr.net/gh/muyao1987/cdn/mars2d.cn/xm/jcxm/1.jpg)
+
+### 1.2 widget的特点
+- 将每个业务模块设计为独立的widget模块，互相都是独立的，互相解耦，类似vue组件。
+- widget是按需加载和初始化，默认是不加载的，单击激活后才会加载其相关js和html等资源。 
+- 有很多可配置的参数，无需代码即可按需配置自动释放激活、界面位置、大小等。
+
+
+> 保留使用 widget模块化 方式，并不是指我们不用vue等现代化技术栈，目前我们也有Vue版基础项目在使用，目前尚未公开，后续合适时间会公开发布。
+
+
+## 2. 基础项目
+ 我们通过vscode打开该项目，项目中最重要的是2个点是，`json配置文件` 和 `widget模块化`开发，一般开发项目只用修改配置文件和开发新的widget即可。
+
+- `config/config.json`是地图初始化构造参数配置文件
+- `config/widget.json`为项目widget的模块配置信息文件
+- `widgets目录`为模块功能目录，也可以按业务分在多个目录中，比如`widgetsTS目录`
+
+
+ ![image](https://cdn.jsdelivr.net/gh/muyao1987/cdn/mars2d.cn/xm/jcxm/2.jpg) 
+
+
+
+### 2.1 下载代码
+目前我们已经开源了基础项目的基础框架和一些部分widget。可以从下面链接下载代码：
  
+1. 国外Github:[https://github.com/marsgis/mars2d-widget-project](https://github.com/marsgis/mars2d-widget-project)
+2. 国内Gitee [https://gitee.com/marsgis/mars2d-widget-project](https://gitee.com/marsgis/mars2d-widget-project)
+
+  
+::: danger 
+如果需要所有功能模块的widget和其他一些项目模板，需要联系我们付费购买 项目源代码。
+:::
+
+
+
+### 2.2 include-lib.js文件说明 
+
+我们当前项目内的第三方类库及我们的sdk类库都存放在lib目录下，每个目录均有`README.md`文件说明该类库的github地址、官网和用途等信息。
+
+ ![image](http://mars2d.cn/dev/img/guide/start-includeLib-ml.jpg) 
+
+为了方便切换和引入第3方lib，我们编写了一个独立的js文件[include-lib.js](https://cdn.jsdelivr.net/gh/marsgis/mars2d-es5-example/lib//include-lib.js)来统一调用使用第3方lib,在需要的页面按下面方式引入lib：
+```html
+<!--第三方lib-->
+<script type="text/javascript" src="../lib/include-lib.js" libpath="../lib/"
+    include="font-awesome,mars2d"></script>
+```
+该方式等价于（如不习惯include-lib.js，也可以改为下面演示的直接引入方式）： 
+
+```html
+<!--引入leaflet基础lib-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin="" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
+
+<!--引入mars2d库lib-->
+<link href="https://unpkg.com/mars2d/dist/mars2d.css" rel="stylesheet" type="text/css" />
+<script src="https://unpkg.com/mars2d/dist/mars2d.js" type="text/javascript"></script>
+```
+ 
+ 
+ 
+
+## 3. widget初始化及管理
+
+ 目前平台示例和项目中使用到的[widget.json](http://mars2d.cn/project/jcxm/config/widget.json) 是静态json文件方式
+ 文件中配置参数与[mars2d.widget.init方法API](http://mars2d.cn/api/widget.html#.init)的方法参数是完成相同一致的，代码中加载json后传入到init方法中。
+ 
+ widget初始化方法：
+ ```js
+//初始化widget管理器
+mars2d.widget.init(map, widgetCfg, './') //tip: 第3个参数支持定义widget目录的相对路径。
+```
+
+### 3.1 widget的管理
+在外部调用widget功能，都是通过[mars2d.widget静态类](http://mars2d.cn/api/widget.html)来统一管理的，更多方法可以参阅该类的API文档。
+ 
+比如激活widet：在需要外部使用的地方通过 mars2d.widget.activate([参数](http://mars2d.cn/api/widget.html#.WidgetOptions)) 来激活widget模块, 参数支持多种模式可多样化兼容使用, 比如：
+ ```js
+//常用，直接使用uri
+mars2d.widget.activate("widgets/bookmark/widget.js"); 
+
+//支持所有可配参数和自定义参数，在widget.js内部通过this.config可获取传入的参数
+mars2d.widget.activate({name:"书签", uri: "widgets/bookmark/widget.js "}); 
+```
+
+
+### 4. 单个widget模块组成
+
+每个widget模块必须存在 widget.js 文件，该文件内部定义了一个继承了 [BaseWidget类](http://mars2d.cn/api/BaseWidget.html)的子类。
+
+类内最重要的几个属性和方法如下：
+|  分类  |名称  | 功能| 
+| ----| ----  | ---- | 
+| get属性 | resources   |需要预先加载到主页面的js、css资源文件 | 
+| get属性 | view   |存在弹窗或界面时配置，具体详见后节说明 | 
+| 内部变量 | config   |对应widget定义的或传入的配置信息  |   
+| 内部变量 | path   |当前widget所在目录的相对于网页的路径  |   
+| 内部变量 | map   |当前Map地图对象  |   
+| 方法 | create   |插件初始化触发，仅执行1次   |   
+| 方法 | winCreateOK   |view属性定义的界面每次初始化后调用   |   
+| 方法 | activate   | 打开激活插件 触发   |   
+| 方法 | disable   | 关闭释放插件 触发   |   
+
+### 4.1 view属性
+ 默认每个插件是无界面或弹窗的, 如果需要有对应的弹窗或界面(如弹窗、输入栏、菜单等)请定义`view`属性。
+
+请参考贝`widgets\_example* `命名的示例widget来新建widget模块，建议直接复制后改下目录名称即可。
+
+
+view配置中必须存在2个属性：type标识类型，url为html地址。 目前view有下面3种模式供使用：
+
+|  type属性  | 功能| 对应的示例 |  说明  | 
+| ----  | ---- | ----   |----  | 
+| window  |iframe模式弹窗 |_example | 独立的html子页面，比较自由，简单粗暴、无任何限制；可以每个页面用不同的UI和第三方插件不用考虑冲突问题；任何水平的开发人员均容易快速开发。|
+| divwindow  |div元素模式弹窗 |_example_divwin | 可直接互相访问，这种模式弊端是易引起模块间id命名冲突，在css和html中命名时需注意。|
+| append  |任意html元素 |_example_append | 任意div节点，比较自由. |
+
+ 
+#### window时：
+view.html页面（或引入的view.js中）必须定义一个initWidgetView方法，框架会自动调用进行传入当前widget对象，用于页面中调用widget中的方法属性。
+可以配置windowOptions参数来定义弹窗的大小、位置等。
+ ```js 
+get view() {
+   return {
+      type: 'window',
+      url: 'view.html',
+      windowOptions: { width: 250 },
+   }
+}
+ ```
+
+#### divwindow时：
+此模式不用单独的js， view界面相关js逻辑全部写在widget.js中
+同样支持windowOptions参数配置。
+ ```js 
+get view() {
+   return {
+      type: 'divwindow',
+      url: 'view.html',
+      windowOptions: { width: 210, height: 210 },
+   }
+}
+ ```
+
+#### append时：
+将view的html直接添加至主页面中指定id的DOM节点下，通过`parent`属性配置指定，默认是`body`。
+ ```js 
+get view() {
+   return { type: 'append', url: 'view.html', parent: '#centerDiv' }
+}
+ ```
+
+
+
+
+ 
+### 4.2 widget被激活后执行流程
+widget激活后页面执行流程:
+- 1. 引入加载widget.js到index.html页面上
+- 2. （如果有resources配置）引入加载resources资源到index.html页面上
+- 3. （如果有view配置）打开view弹窗或构造view界面
+
+> widget激活后执行方法顺序：
+   create   =>      winCreateOK       =>    activate     =>       view中的 initWidgetView 
+
+
+### 4.3 测试开发好的widget
+ 当还没有菜单时，需要测试widget功能，可以2种方式：
+
+ 一是在url中传入widget参数方式激活对应widget来测试.比如：
+ > [http://mars2d.cn/project/jcxm/index.html?widget=widgets/plot/widget.js](http://mars2d.cn/project/jcxm/index.html?widget=widgets/plot/widget.js)
+ 
+ 二是在widget.json中可以加配置` "debugger": true,`  打开 widget测试栏 功能，方便测试及触发激活widget，发布的正式版本记得改回 false 或删除。
+```json
+{
+  "debugger":true,
+  "version": "20210803",
+  "defaultOptions": {
+    "style": "dark",
+    "windowOptions": {
+      "skin": "layer-mars-dialog animation-scale-up",
+      "position": { "top": 50,  "right": 10 },
+      "maxmin": true,
+      "resize": true
+    },
+    "autoReset": false,
+    "autoDisable": true,
+    "disableOther": true
+  },
+  "openAtStart": [],
+  "widgets": []
+}
+```
+运行后效果：
+![image](http://mars2d.cn/dev/img/guide/project-widget-testbar.jpg) 
+
+
+## 4.4 向widget传值示例
+ 
+在qyPoint模块中(widgetsTS\qyPoint\widget.js)单击地图上的点后，激活弹出详情窗口qyDetailsView模块
+
+  ```js  
+showDetails(item) { 
+      mars2d.widget.activate({
+         uri: 'widgetsTS/qyDetailsView/widget.js',
+         dataQy: item,
+      })
+}
+```
+
+qyDetailsView模块(widgetsTS\qyDetailsView\widget.js)中通过this.config获取传过来的值
+
+```js  
+getData() {
+   var item = this.config.dataQy //传入过来的参数
+   return item
+}
+```
+
+
+## 4.5 不同widget之间的通信交互示例
+ 
+可以利用mars2d.widget作为桥梁，通过事件的方式交互，这种比较自由方便，注意项目内**事件名称唯一**即可。
+
+```js  
+//演示：抛出事件，在其他widget或vue中监听使用  widgets\centerXY\widget.js
+mars2d.widget.fire("centerXY",{position:position })
+
+//演示：接收的widget内抛出的事件  js、vue或其他widget.js中
+mars2d.widget.on('centerXY', function (event) {
+   console.log('在widget进行了坐标定位1', event)
+})
+
+//如果在弹窗的view.js中
+parent.mars2d.widget.on('centerXY', function (event) {
+   console.log('在widget进行了坐标定位2', event)
+})
+
+```
+
+### A模块 持续更新B模块
+在roamFly模块中，动态去更新已打开的roamChars模块，更新显示数据
+```js 
+//持续更新
+updateCharsWidgeFlyOk(alllen) { 
+   //抛出事件
+   mars2d.widget.fire("updateRoamChars",{ data:alllen })
+}
+```
+roamChars模块中监听事件
+```js 
+create() {
+   //接收roamFly的widget内抛出的事件
+   mars2d.widget.on('updateRoamChars', function (event) {
+      console.log('接收到了数据', data)
+   })
+}
+```
+
+
+### 2个iframe弹窗时，A的view内调用B的view内 
+A、B两个都是iframe弹窗模式的widget模块时，在A模块中的view.html中需要调用B模块的view.html
+
+> 【主页面】widget.js都在index.html主页面; 【iframe子页面】 2个view.html（含view.js）是iframe子页面。
+ 
+如果不用事件时，其调用流程是下图过程：
+ ![image](http://mars2d.cn/dev/img/guide/project-widget-2view.jpg) 
+ 
+
+如果通过事件方式可以下面的方式：
+```js  
+//演示：在A模块中的view.html中抛出事件
+parent.mars2d.widget.fire("widget2widget",{ data: position })
+
+//演示：如果在弹窗的view.js中
+parent.mars2d.widget.on('widget2widget', function (event) {
+   console.log('接收到了A模块抛出的事件', event)
+})
+
+```
+
+
+
+
+## 5. 学习路线
+以上介绍的这么只是让大家对Mars2D基础项目的基本情况和架构做了概览了解。下一步就需要大家静下心来阅读代码了，学习没有捷径，可以按下面路线一步步来学习。
+
+查看已有的3个 “example示例”空白模版的代码、配置信息、运行效果。熟悉widget机制。
+
+
+> _example模块 => 已有的widgets模块 => 编写全新的widget
+ 
+
+ ![image](http://mars2d.cn/dev/img/guide/project-widget-example.jpg) 
+
+
 
 
 
@@ -58,4 +349,3 @@
 ## 版权说明
 1. Mars2D平台由[火星科技](http://marsgis.cn/)自主研发，拥有所有权利。
 2. 任何个人或组织可以在遵守相关要求下可以免费无限制使用。
-n)购买。

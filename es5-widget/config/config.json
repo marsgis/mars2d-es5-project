@@ -1,5 +1,5 @@
 ﻿{
-  "map": {
+  "mars2d": {
     "zoom": 13,
     "center": { "lng": 117.240601, "lat": 31.827107 },
     "minZoom": 3,
@@ -166,6 +166,30 @@
         "type": "group"
       },
       {
+        "id": 4030,
+        "pid": 40,
+        "name": "PBF矢量瓦片",
+        "type": "group"
+      },
+      {
+        "pid": 4030,
+        "name": "规划图",
+        "type": "pbf",
+        "url": "http://server.mars2d.cn/geoserver/gwc/service/tms/1.0.0/mars%3Ahfgh3857@EPSG%3A3857@pbf/{z}/{x}/{-y}.pbf",
+        "interactive": true,
+        "style":{
+          "color": "rgba(110, 110, 110, 255)",
+          "opacity": 1,
+          "weight": 1,
+          "fill": true,
+          "fillColor": "rgba(205, 233, 247, 255)",
+          "fillOpacity": 1
+        },
+        "zIndex": 999,
+        "popup": "{用地名称}"
+      },
+
+      {
         "id": 4020,
         "pid": 40,
         "name": "OGC WMS数据",
@@ -212,7 +236,6 @@
         "transparent": true,
         "format": "image/png"
       },
-
       {
         "id": 4010,
         "pid": 40,

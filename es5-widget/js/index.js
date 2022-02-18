@@ -27,12 +27,11 @@ $(document).ready(function () {
 
   haoutil.loading.show();
 
-  mars2d.axios
-    .get(configfile)
-    .then(function (response) {
+  mars2d.Util.fetchJson({ url: configfile })
+    .then(function (data) {
       haoutil.loading.hide();
-      //构建地图
-      initMap(response.data.map);
+
+      initMap(data.mars2d);    //构建地图
     })
     .catch(function (error) {
       haoutil.loading.hide();
@@ -41,7 +40,7 @@ $(document).ready(function () {
     });
 });
 
-function initMap(options) {
+function initMap (options) {
   //合并属性参数，可覆盖config.json中的对应配置
   let mapOptions = mars2d.Util.merge(options, {});
 
@@ -63,14 +62,12 @@ function initMap(options) {
 }
 
 //初始化widget相关
-function initWidget(map) {
+function initWidget (map) {
   haoutil.loading.show();
-  mars2d.axios
-    .get("config/widget.json")
-    .then(function (response) {
-      haoutil.loading.hide();
 
-      let widgetCfg = response.data;
+  mars2d.Util.fetchJson({ url: "config/widget.json" })
+    .then(function (widgetCfg) {
+      haoutil.loading.hide();
 
       //url如果有传参时的处理
       if (haoutil.isutil.isNotNull(request.widget)) {
@@ -104,21 +101,21 @@ function initWidget(map) {
 
 //外部页面调用
 var lastWidgetItem;
-function activateWidget(item) {
+function activateWidget (item) {
   if (!map) {
     lastWidgetItem = item;
     return;
   }
   mars2d.widget.activate(item);
 }
-function disableWidget(item) {
+function disableWidget (item) {
   mars2d.widget.disable(item);
 }
-function activateFunByMenu(fun) {
+function activateFunByMenu (fun) {
   eval(fun);
 }
 
-function flyHome() {
+function flyHome () {
   mars2d.widget.disableAll();
   map.flyHome();
 }
