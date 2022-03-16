@@ -29,7 +29,7 @@
     }
     //每个窗口创建完成后调用
     winCreateOK(opt, result) {
-      var that = this;
+      let that = this;
 
       $("#measure_length_danwei").selectpicker({
         container: "body",
@@ -100,11 +100,11 @@
       });
     }
     updateResultLengthByDw() {
-      var danwei = this.getLengtchDanWei();
+      let danwei = this.getLengtchDanWei();
       this.measure.updateUnit(danwei);
     }
     updateResultAreaByDw() {
-      var danwei = this.getAreaDanWei();
+      let danwei = this.getAreaDanWei();
       this.measure.updateUnit(danwei);
     }
   }

@@ -3,9 +3,9 @@
   class MyWidget extends mars2d.widget.BaseWidget {
     //弹窗配置
     get view() {
-      var index = this.getBasemaps().length;
+      let index = this.getBasemaps().length;
 
-      var width, height;
+      let width, height;
       if (index <= 4) {
         width = 190;
         height = Math.ceil(index / 2) * 100 + 70;
@@ -57,25 +57,27 @@
     //处理CRS坐标系不同的底图之间切换
     _workCRS(layerId) {
       let layer = this.map.getLayer(layerId, "id");
-      if (!layer || !layer.options.crs || this.map.crs == layer.options.crs) return;
+      if (!layer || !layer.options.crs || this.map.crs == layer.options.crs) {
+        return;
+      }
 
-      var center = this.map.getCenter(); //传出是wgs84无偏的
-      var zoom = this.map.getZoom();
+      let center = this.map.getCenter(); //传出是wgs84无偏的
+      let zoom = this.map.getZoom();
 
       //=================刷新页面方式切换不同坐标系的底图======================
-      var lasturl = window.location.href;
+      let lasturl = window.location.href;
       if (lasturl.lastIndexOf("#") != -1) {
         lasturl = lasturl.replace(window.location.hash, "").replace("#", "");
       }
-      var idx = lasturl.lastIndexOf("?");
+      let idx = lasturl.lastIndexOf("?");
       if (idx != -1) {
         lasturl = lasturl.substring(0, idx);
       }
       this.map.remove();
 
-      var url = lasturl + "?x=" + center[1] + "&y=" + center[0] + "&z=" + zoom + "&baselayer=" + layer.options.name;
-      var req = haoutil.system.getRequest();
-      for (var key in req) {
+      let url = lasturl + "?x=" + center[1] + "&y=" + center[0] + "&z=" + zoom + "&baselayer=" + layer.options.name;
+      let req = haoutil.system.getRequest();
+      for (let key in req) {
         if (key == "x" || key == "y" || key == "z" || key == "baselayer") {
           continue;
         }

@@ -36,12 +36,12 @@
         return;
       }
 
-      var arr = this.data;
+      let arr = this.data;
 
       //移动设备上，处理下菜单层次
       if (!haoutil.system.isPCBroswer() && arr.length == 3 && arr[0].children) {
-        var item1 = arr.shift();
-        var item2 = arr.shift();
+        let item1 = arr.shift();
+        let item2 = arr.shift();
         arr[0].children.insert(item2, 0);
         arr[0].children.insert(item1, 0);
       }
@@ -50,11 +50,11 @@
     }
     //构造 菜单
     initMenu(arr) {
-      var widgetObj = {};
+      let widgetObj = {};
 
-      var inhtml = "";
-      for (var i = 0, len = arr.length; i < len; i++) {
-        var item = arr[i];
+      let inhtml = "";
+      for (let i = 0, len = arr.length; i < len; i++) {
+        let item = arr[i];
         if (item.hasOwnProperty("visible") && !item.visible) {
           continue;
         }
@@ -104,7 +104,7 @@
       $(".toolBarRight").html(inhtml);
 
       $(".toolBarRight .widget-btn").click(function () {
-        var uri = $(this).attr("data-widget");
+        let uri = $(this).attr("data-widget");
         if (haoutil.isutil.isNull(uri)) {
           return;
         }
@@ -113,7 +113,7 @@
         if (mars2d.widget.isActivate(uri)) {
           mars2d.widget.disable(uri);
         } else {
-          var opt = {
+          let opt = {
             ...(widgetObj[uri] || {}),
             uri: uri,
           };

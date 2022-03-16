@@ -1,30 +1,39 @@
-# Mars3D基础项目系统 - ES5传统版（widget模块）
+<p align="center">
+<img src="https://muyao1987.gitee.io/cdn/mars2d.cn/logo.png" width="300px" />
+</p>
 
-   传统模式Web前端技术栈下的一个具备widget基础功能的[Mars3D](http://mars3d.cn)应用的三维地球项目模版
+<p align="center">基于 原生JS下widget模块 的  Mars2D综合态势系统（ES5版）</p>
+
+<p align="center">
+<a target="_black" href="https://github.com/marsgis/mars2d">
+<img alt="GitHub stars" src="https://img.shields.io/github/stars/marsgis/mars2d?style=flat&logo=github">
+</a>
+<a target="_black" href="https://www.npmjs.com/package/mars2d">
+<img alt="Npm downloads" src="https://img.shields.io/npm/dt/mars2d?style=flat&logo=npm">
+</a>
+<a target="_black" href="https://www.npmjs.com/package/mars2d">
+<img alt="Npm version" src="https://img.shields.io/npm/v/mars2d.svg?style=flat&logo=npm&label=version"/>
+</a>
+</p>
+
  
  
 ## 项目介绍
 
-这是一个基于传统模式Web前端技术栈下的一个具备widget基础功能的[Mars2D](http://mars2d.cn)应用的二维地图项目模版，我们称之为“基础项目”。
+Mars2D基础项目 是基于[Mars2D平台](http://mars2d.cn)做的一个应用系统，提供的一个基础项目模版，包含常用基础地图功能，可在该基础项目上快速开发搭建新项目。方便快速搭建三维地图产品，敏捷开发，可复用，支持各种配置，适合各种场景使用。
 
-[基础项目 (widget方式)](http://mars2d.cn/project/jcxm/index.html)是我们已经开发完成，并多年来应用于无数项目，归纳总结的一个基础的项目模版，包含常用基础地图功能，可在该基础项目上快速开发搭建新项目。
-电子沙盘、综合态势等系统代码内部结构和基础项目类同，只是在widget功能数量和样式上有所不同。
+原生JS版 (widget方式) 的特点：
+1. 基于**传统模式原生JS**技术栈下开发的
+2. 使用[mars2d-widget](https://gitee.com/marsgis/mars2d-plugin/tree/master/mars2d-plugin-widget)插件进行模块化封装调用各功能
+3. 火星科技在传统技术栈时(vue还没成熟流行时)多年来应用于无数项目，归纳总结的一个基础的项目模版
 
- ![image](https://cdn.jsdelivr.net/gh/muyao1987/cdn/marsgis.cn/img/mars2d/project1.jpg)
 
-### 使用说明
- 在任意开发编辑器（如vscode等）或http服务器(如node、nginx、tomcat、IIS等)下直接运行浏览index.html即可
 
-### 运行效果 
- [在线Demo](http://mars2d.cn/project/jcxm/)  
+## 运行效果 
+访问[基础项目在线](http://mars2d.cn/project/jcxm/index.html)体验效果和功能
 
- ![image](https://cdn.jsdelivr.net/gh/muyao1987/cdn/mars2d.cn/xm/jcxm/1.jpg)
+ ![image](https://muyao1987.gitee.io/cdn/mars2d.cn/xm/jcxm/1.jpg)
 
-### 下载最新lib
- 建议从[http://mars2d.cn/download.html](http://mars2d.cn/download.html)下载最新mars2d类库后覆盖至`lib/`目录下即可。
-
-### 压缩及混淆
- build整站压缩及混淆：[https://github.com/muyao1987/web-dist](https://github.com/muyao1987/web-dist)
 
 
 
@@ -44,7 +53,9 @@ widget模块化设计方式是我们在2016年设计的一种基于传统JS的�
 - 有很多可配置的参数，无需代码即可按需配置自动释放激活、界面位置、大小等。
 
 
-> 保留使用 widget模块化 方式，并不是指我们不用vue等现代化技术栈，目前我们也有Vue版基础项目在使用，目前尚未公开，后续合适时间会公开发布。
+> 保留使用 widget模块化 方式，并不是指我们不用vue等现代化技术栈，而是具体按公司人员研发水平和技术栈情况按需选择，适合自己的才是最好的。
+
+
 
 
 ## 2. 基础项目
@@ -55,20 +66,71 @@ widget模块化设计方式是我们在2016年设计的一种基于传统JS的�
 - `widgets目录`为模块功能目录，也可以按业务分在多个目录中，比如`widgetsTS目录`
 
 
- ![image](https://cdn.jsdelivr.net/gh/muyao1987/cdn/mars2d.cn/xm/jcxm/2.jpg) 
-
-
+ ![image](https://muyao1987.gitee.io/cdn/mars2d.cn/xm/jcxm/2.jpg) 
 
 ### 2.1 下载代码
 目前我们已经开源了基础项目的基础框架和一些部分widget。可以从下面链接下载代码：
  
-1. 国外Github:[https://github.com/marsgis/mars2d-widget-project](https://github.com/marsgis/mars2d-widget-project)
-2. 国内Gitee [https://gitee.com/marsgis/mars2d-widget-project](https://gitee.com/marsgis/mars2d-widget-project)
+1. 国外Github:[https://github.com/marsgis/mars2d-es5-project](https://github.com/marsgis/mars2d-es5-project)
+2. 国内Gitee [https://gitee.com/marsgis/mars2d-es5-project](https://gitee.com/marsgis/mars2d-es5-project)
 
+
+在任意开发编辑器（如vscode等）或http服务器(如node、nginx、tomcat、IIS等)下直接运行浏览index.html即可
   
+>电子沙盘、综合态势等系统代码内部结构和基础项目类同，只是在widget功能数量和样式上有所不同。
+
+
 ::: danger 
 如果需要所有功能模块的widget和其他一些项目模板，需要联系我们付费购买 项目源代码。
-:::
+::: 
+
+
+
+
+### 运行方式1：使用vscode及其插件
+
+在任意开发编辑器（如vscode等）或http服务器(如node、nginx、tomcat、IIS等)下直接运行浏览`index.html`或对应示例页面即可 ，
+
+建议使用VScode工具打开代码目录（请参考上一章节安装好VScode 及 Live Server插件）。
+
+- 推荐使用 vscode，安装参考[开发环境搭建教程](guide/start/env.html)
+- 安装 vscode 插件，推荐安装 Live Server
+
+ 参考下图通过Live Server访问各页面
+
+ ![image](http://mars2d.cn/dev/img/guide/start-example-run.jpg) 
+
+
+### 运行方式2：运行npm命令
+
+#### 首次运行前安装依赖
+```
+npm install
+
+//或使用代理
+npm i --registry=http://registry.taobao.org
+```
+
+#### 启动开发环境
+```
+npm run serve
+```
+
+#### 编译构建
+```
+npm run build //编译后生成在dist目录，拷贝出去发布即可
+npm run serve:dist  //测试dist运行状态
+```
+
+
+
+
+#### mars2d-widget插件
+ 为了更容易理解内部逻辑，您可以下载[mars2d-widget插件源码](https://gitee.com/marsgis/mars2d-plugin) 进行查阅。
+
+#### 下载最新lib
+ 建议从[http://mars2d.cn/download](http://mars2d.cn/download)下载最新mars2d类库后覆盖至`lib/`目录下即可。
+
 
 
 
@@ -76,24 +138,28 @@ widget模块化设计方式是我们在2016年设计的一种基于传统JS的�
 
 我们当前项目内的第三方类库及我们的sdk类库都存放在lib目录下，每个目录均有`README.md`文件说明该类库的github地址、官网和用途等信息。
 
- ![image](http://mars2d.cn/dev/img/guide/start-includeLib-ml.jpg) 
+ ![image](/dev/img/guide/start-includeLib-ml.jpg) 
 
-为了方便切换和引入第3方lib，我们编写了一个独立的js文件[include-lib.js](https://cdn.jsdelivr.net/gh/marsgis/mars2d-es5-example/lib//include-lib.js)来统一调用使用第3方lib,在需要的页面按下面方式引入lib：
+为了方便切换和引入第3方lib，我们编写了一个独立的js文件[include-lib.js](https://gitee.com/marsgis/mars2d-es5-example/blob/master/lib/include-lib.js)来统一调用使用第3方lib,在需要的页面按下面方式引入lib：
 ```html
 <!--第三方lib-->
 <script type="text/javascript" src="../lib/include-lib.js" libpath="../lib/"
-    include="font-awesome,mars2d"></script>
+    include="font-awesome,turf,mars2d"></script>
 ```
 该方式等价于（如不习惯include-lib.js，也可以改为下面演示的直接引入方式）： 
 
 ```html
-<!--引入leaflet基础lib-->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" crossorigin="" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js" crossorigin=""></script>
+<!--对应font-awesome-->
+<link rel="stylesheet" href="../lib/fonts/font-awesome/css/font-awesome.min.css">
 
-<!--引入mars2d库lib-->
-<link href="https://unpkg.com/mars2d/dist/mars2d.css" rel="stylesheet" type="text/css" />
-<script src="https://unpkg.com/mars2d/dist/mars2d.js" type="text/javascript"></script>
+<!--对应turf-->
+<script type="text/javascript" src="../lib/turf/turf.min.js"></script>
+
+<!--对应mars3d-->
+<link rel="stylesheet" href="../lib/Cesium/Widgets/widgets.css">
+<script type="text/javascript" src="../lib/Cesium/Cesium.js"></script>
+<link rel="stylesheet" href="../lib/mars2d/mars2d.css">
+<script type="text/javascript" src="../lib/mars2d/mars2d.js"></script>
 ```
  
  
@@ -168,6 +234,8 @@ get view() {
 }
  ```
 
+ > 此时的view.html和view.js是iframe的子页面，与地图所在的index.html是**父子关系**，相关js代码时需要注意这个层次才能更好的编码。
+
 #### divwindow时：
 此模式不用单独的js， view界面相关js逻辑全部写在widget.js中
 同样支持windowOptions参数配置。
@@ -213,7 +281,7 @@ widget激活后页面执行流程:
 ```json
 {
   "debugger":true,
-  "version": "20210803",
+  "version": "20170825",
   "defaultOptions": {
     "style": "dark",
     "windowOptions": {
@@ -231,7 +299,7 @@ widget激活后页面执行流程:
 }
 ```
 运行后效果：
-![image](http://mars2d.cn/dev/img/guide/project-widget-testbar.jpg) 
+![image](/dev/img/guide/project-widget-testbar.jpg) 
 
 
 ## 4.4 向widget传值示例
@@ -277,6 +345,13 @@ parent.mars2d.widget.on('centerXY', function (event) {
 
 ```
 
+下面演示在【POI查询栏】单击查询按钮后勾选【图层控制】面板中的文庙图层。
+
+ ![image](/dev/img/guide/project-widget-fire.jpg) 
+
+
+
+
 ### A模块 持续更新B模块
 在roamFly模块中，动态去更新已打开的roamChars模块，更新显示数据
 ```js 
@@ -303,7 +378,7 @@ A、B两个都是iframe弹窗模式的widget模块时，在A模块中的view.htm
 > 【主页面】widget.js都在index.html主页面; 【iframe子页面】 2个view.html（含view.js）是iframe子页面。
  
 如果不用事件时，其调用流程是下图过程：
- ![image](http://mars2d.cn/dev/img/guide/project-widget-2view.jpg) 
+ ![image](/dev/img/guide/project-widget-2view.jpg) 
  
 
 如果通过事件方式可以下面的方式：
@@ -330,15 +405,14 @@ parent.mars2d.widget.on('widget2widget', function (event) {
 > _example模块 => 已有的widgets模块 => 编写全新的widget
  
 
- ![image](http://mars2d.cn/dev/img/guide/project-widget-example.jpg) 
-
-
-
-
+ ![image](/dev/img/guide/project-widget-example.jpg) 
+ 
+ 
 
 ## Mars2D 是什么 
-  `Mars2D平台` 是[火星科技](http://marsgis.cn/)研发的一款免费的二维地图客户端开发平台，基于[Leaflet](http://leafletjs.com/)优化提升与B/S架构设计，支持多行业扩展的轻量级高效能GIS开发平台，提供了全新的大数据可视化、实时流数据可视化功能，通过本平台可快速实现浏览器和移动端上美观、流畅的地图呈现与空间分析，完成平台在不同行业的灵活应用。
+>  `Mars2D平台` 是[火星科技](http://marsgis.cn/)研发的一款基于 WebGL 技术实现的三维客户端开发平台，基于[Cesium](https://cesium.com/cesiumjs/)优化提升与B/S架构设计，支持多行业扩展的轻量级高效能GIS开发平台，能够免安装、无插件地在浏览器中高效运行，并可快速接入与使用多种GIS数据和三维模型，呈现三维空间的可视化，完成平台在不同行业的灵活应用。
 
+ > Mars2D平台可用于构建无插件、跨操作系统、 跨浏览器的三维 GIS 应用程序。平台使用 WebGL 来进行硬件加速图形化，跨平台、跨浏览器来实现真正的动态大数据三维可视化。通过 Mars2D产品可快速实现浏览器和移动端上美观、流畅的三维地图呈现与空间分析。
 
 ### 相关网站 
 - Mars2D官网：[http://mars2d.cn](http://mars2d.cn)  

@@ -24,19 +24,19 @@
       this.viewWindow = null;
     }
     showExtent(location) {
-      var arr = location.split(",");
+      let arr = location.split(",");
       this.map.setView(L.latLng(arr[0], arr[1]), arr[2]);
     }
     getDefaultExtent() {
-      var center = this.map.options.center;
-      var zoom = this.map.options.zoom;
-      var bounds = center[0] + "," + center[1] + "," + zoom;
+      let center = this.map.options.center;
+      let zoom = this.map.options.zoom;
+      let bounds = center[0] + "," + center[1] + "," + zoom;
       return bounds;
     }
     getThisExtent() {
-      var center = this.map.getCenter();
-      var zoom = this.map.getZoom();
-      var bounds = center.lat + "," + center.lng + "," + zoom;
+      let center = this.map.getCenter();
+      let zoom = this.map.getZoom();
+      let bounds = center.lat + "," + center.lng + "," + zoom;
       return bounds;
     }
   }

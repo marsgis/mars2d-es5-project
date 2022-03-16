@@ -27,7 +27,6 @@ var configLibs = {
   ],
   'mars2d-widget': [
     //传统JS的widget模块化插件
-    "mars2d/plugins/widget/mars2d-widget.css",
     "mars2d/plugins/widget/mars2d-widget.js"
   ],
   //////////////////////////leaflet第3方插件////////////////////////

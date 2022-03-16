@@ -1,7 +1,7 @@
 //系统 主入口
 
-var map; //地图对象
-var request; //url传入的参数
+let map; //地图对象
+let request; //url传入的参数
 
 $(document).ready(function () {
   try {
@@ -20,7 +20,7 @@ $(document).ready(function () {
     request = haoutil.system.getRequest(window.top);
   }
 
-  var configfile = "config/config.json"; //默认地址
+  let configfile = "config/config.json"; //默认地址
   if (request.config) {
     configfile = request.config; //url传入地址
   }
@@ -31,7 +31,7 @@ $(document).ready(function () {
     .then(function (data) {
       haoutil.loading.hide();
 
-      initMap(data.mars2d);    //构建地图
+      initMap(data.mars2d); //构建地图
     })
     .catch(function (error) {
       haoutil.loading.hide();
@@ -40,7 +40,7 @@ $(document).ready(function () {
     });
 });
 
-function initMap (options) {
+function initMap(options) {
   //合并属性参数，可覆盖config.json中的对应配置
   let mapOptions = mars2d.Util.merge(options, {});
 
@@ -52,9 +52,9 @@ function initMap (options) {
 
   //如果有xyz传参，进行定位
   if (haoutil.isutil.isNotNull(request.x) && haoutil.isutil.isNotNull(request.y) && haoutil.isutil.isNotNull(request.z)) {
-    var x = Number(request.x);
-    var y = Number(request.y);
-    var z = Number(request.z);
+    let x = Number(request.x);
+    let y = Number(request.y);
+    let z = Number(request.z);
     map.setView([y, x], z);
   }
 
@@ -62,7 +62,7 @@ function initMap (options) {
 }
 
 //初始化widget相关
-function initWidget (map) {
+function initWidget(map) {
   haoutil.loading.show();
 
   mars2d.Util.fetchJson({ url: "config/widget.json" })
@@ -100,22 +100,22 @@ function initWidget (map) {
 }
 
 //外部页面调用
-var lastWidgetItem;
-function activateWidget (item) {
+let lastWidgetItem;
+function activateWidget(item) {
   if (!map) {
     lastWidgetItem = item;
     return;
   }
   mars2d.widget.activate(item);
 }
-function disableWidget (item) {
+function disableWidget(item) {
   mars2d.widget.disable(item);
 }
-function activateFunByMenu (fun) {
+function activateFunByMenu(fun) {
   eval(fun);
 }
 
-function flyHome () {
+function flyHome() {
   mars2d.widget.disableAll();
   map.flyHome();
 }

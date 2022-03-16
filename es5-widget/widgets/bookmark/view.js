@@ -1,5 +1,5 @@
-﻿var thisWidget;
-var $table;
+﻿let thisWidget;
+let $table;
 
 function getHeight() {
   return $(window).height() - 50;
@@ -43,7 +43,7 @@ function initWidgetView(_thisWidget) {
       },
     ],
     onClickRow: function (rowData, $element, field) {
-      var location = rowData.data;
+      let location = rowData.data;
       thisWidget.showExtent(location);
     },
   });
@@ -52,11 +52,11 @@ function initWidgetView(_thisWidget) {
   initBookMarkList();
 }
 
-var cookieName = "muyaogis_bookmark";
-var arrBookmark = [];
+let cookieName = "muyaogis_bookmark";
+let arrBookmark = [];
 
 function initBookMarkList() {
-  var lastcookie = haoutil.cookie.get(cookieName); //读取cookie值
+  let lastcookie = haoutil.cookie.get(cookieName); //读取cookie值
   if (lastcookie != null) {
     arrBookmark = eval(lastcookie);
   }
@@ -64,7 +64,7 @@ function initBookMarkList() {
   if (arrBookmark == null || arrBookmark.length == 0) {
     arrBookmark = [];
 
-    var bounds = thisWidget.getDefaultExtent();
+    let bounds = thisWidget.getDefaultExtent();
     arrBookmark.push({ name: "默认位置", data: bounds });
   }
 
@@ -77,19 +77,19 @@ function saveBookmark() {
     arrBookmark = [];
   }
 
-  var name = $.trim($("#txt_bookmark_name").val()).replace("'", "").replace('"', "");
+  let name = $.trim($("#txt_bookmark_name").val()).replace("'", "").replace('"', "");
   if (name.length == 0) {
     toastr.warning("请输入名称");
     return;
   }
-  for (var index = arrBookmark.length - 1; index >= 0; index--) {
+  for (let index = arrBookmark.length - 1; index >= 0; index--) {
     if (arrBookmark[index].name == name) {
       toastr.warning("该名称已存在，请更换！");
       return;
     }
   }
 
-  var bounds = thisWidget.getThisExtent();
+  let bounds = thisWidget.getThisExtent();
   arrBookmark.push({ name: name, data: bounds });
   let lastcookie = JSON.stringify(arrBookmark);
   haoutil.cookie.add(cookieName, lastcookie);
@@ -99,11 +99,11 @@ function saveBookmark() {
 }
 
 function delBookMark(name) {
-  for (var index = arrBookmark.length - 1; index >= 0; index--) {
+  for (let index = arrBookmark.length - 1; index >= 0; index--) {
     if (arrBookmark[index].name == name) {
       arrBookmark.splice(index, 1);
 
-      var lastcookie = JSON.stringify(arrBookmark);
+      let lastcookie = JSON.stringify(arrBookmark);
       haoutil.cookie.add(cookieName, lastcookie);
 
       $table.bootstrapTable("load", arrBookmark);
