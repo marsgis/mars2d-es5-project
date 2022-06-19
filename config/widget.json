@@ -22,7 +22,11 @@
     {
       "name": "百度POI查询",
       "uri": "widgets/queryGaodePOI/widget.js"
-    } 
+    },
+    {
+      "name": "路线规划",
+      "uri": "widgets/queryGaodeRoute/widget.js"
+    }
   ],
   "widgets": [
     {

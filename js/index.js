@@ -44,6 +44,22 @@ function initMap(options) {
   //合并属性参数，可覆盖config.json中的对应配置
   let mapOptions = mars2d.Util.merge(options, {});
 
+  //存在url传入指定的底图,对应在widgets\manageBasemaps\widget.js中传入
+  if (request.baselayer) {
+    for (let i = 0; i < mapOptions.basemaps.length; i++) {
+      let item = mapOptions.basemaps[i];
+      if (item.name == request.baselayer) {
+        item.show = true;
+        if (item.crs) {
+          mapOptions.crs = item.crs;
+        }
+        break;
+      } else {
+        item.show = false;
+      }
+    }
+  }
+
   //创建地图
   map = new mars2d.Map("mars2dContainer", mapOptions);
 

@@ -29,14 +29,12 @@
           {
             "name": "底图",
             "type": "tdt",
-            "layer": "vec_d",
-            "key": ["bcc62222fc634ec736589c483de933e6"]
+            "layer": "vec_d"
           },
           {
             "name": "注记",
             "type": "tdt",
-            "layer": "vec_z",
-            "key": ["bcc62222fc634ec736589c483de933e6"]
+            "layer": "vec_z"
           }
         ],
         "show": true
@@ -50,14 +48,12 @@
           {
             "name": "底图",
             "type": "tdt",
-            "layer": "img_d",
-            "key": ["bcc62222fc634ec736589c483de933e6"]
+            "layer": "img_d"
           },
           {
             "name": "注记",
             "type": "tdt",
-            "layer": "img_z",
-            "key": ["bcc62222fc634ec736589c483de933e6"]
+            "layer": "img_z"
           }
         ]
       },
@@ -67,7 +63,6 @@
         "icon": "img/basemaps/tianditudem.png",
         "type": "tdt",
         "layer": "ter",
-        "key": ["bcc62222fc634ec736589c483de933e6"],
         "maxNativeZoom": 14,
         "errorTileUrl": "img/tile/errortile.png"
       },
@@ -104,6 +99,22 @@
             "layer": "img_z"
           }
         ]
+      },
+      {
+        "pid": 10,
+        "name": "百度地图",
+        "crs": "baidu",
+        "type": "baidu",
+        "layer": "vec",
+        "icon": "img/basemaps/baidumap.png"
+      },
+      {
+        "pid": 10,
+        "name": "百度卫星",
+        "crs": "baidu",
+        "type": "baidu",
+        "layer": "img",
+        "icon": "img/basemaps/baiduimage.png"
       },
       {
         "pid": 10,

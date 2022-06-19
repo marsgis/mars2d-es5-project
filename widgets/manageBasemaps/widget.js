@@ -48,7 +48,7 @@
 
     //树节点变化后调用
     updateBasemap(layerId) {
-      // this._workCRS(layerId); //需要时再启用
+      this._workCRS(layerId); //需要时再启用
 
       this.map.basemap = layerId;
       this.disableBase();
@@ -57,7 +57,9 @@
     //处理CRS坐标系不同的底图之间切换
     _workCRS(layerId) {
       let layer = this.map.getLayer(layerId, "id");
-      if (!layer || !layer.options.crs || this.map.crs == layer.options.crs) {
+      let mapCrs = this.map.marsOptions.crs;
+      let layerCrs = layer.options.crs || "EPSG:3857";
+      if (!layer || mapCrs == layerCrs) {
         return;
       }
 
@@ -73,9 +75,9 @@
       if (idx != -1) {
         lasturl = lasturl.substring(0, idx);
       }
-      this.map.remove();
+      debugger;
 
-      let url = lasturl + "?x=" + center[1] + "&y=" + center[0] + "&z=" + zoom + "&baselayer=" + layer.options.name;
+      let url = lasturl + "?x=" + center.lng + "&y=" + center.lat + "&z=" + zoom + "&baselayer=" + layer.name;
       let req = haoutil.system.getRequest();
       for (let key in req) {
         if (key == "x" || key == "y" || key == "z" || key == "baselayer") {
@@ -83,6 +85,7 @@
         }
         url += "&" + key + "=" + req[key];
       }
+      this.map.remove();
       window.location.href = url;
 
       //=================不刷新页面方式切换不同坐标系的底图======================
