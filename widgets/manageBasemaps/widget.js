@@ -57,7 +57,7 @@
     //处理CRS坐标系不同的底图之间切换
     _workCRS(layerId) {
       let layer = this.map.getLayer(layerId, "id");
-      let mapCrs = this.map.marsOptions.crs;
+      let mapCrs = this.map.crs;
       let layerCrs = layer.options.crs || "EPSG:3857";
       if (!layer || mapCrs == layerCrs) {
         return;
@@ -65,6 +65,15 @@
 
       let center = this.map.getCenter(); //传出是wgs84无偏的
       let zoom = this.map.getZoom();
+
+      //坐标转换
+      if (mapCrs == "baidu") {
+        let newpt = mars2d.PointTrans.bd2wgs([center.lng, center.lat]);
+        center = { lng: newpt[0], lat: newpt[1] };
+      } else if (layerCrs == "baidu") {
+        let newpt = mars2d.PointTrans.wgs2bd([center.lng, center.lat]);
+        center = { lng: newpt[0], lat: newpt[1] };
+      }
 
       //=================刷新页面方式切换不同坐标系的底图======================
       let lasturl = window.location.href;
@@ -75,7 +84,6 @@
       if (idx != -1) {
         lasturl = lasturl.substring(0, idx);
       }
-      debugger;
 
       let url = lasturl + "?x=" + center.lng + "&y=" + center.lat + "&z=" + zoom + "&baselayer=" + layer.name;
       let req = haoutil.system.getRequest();
