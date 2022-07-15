@@ -1,37 +1,37 @@
-﻿let thisWidget;
+﻿let thisWidget
 
 //当前页面业务
 function initWidgetView(_thisWidget) {
-  thisWidget = _thisWidget;
+  thisWidget = _thisWidget
 
-  let arrBasemaps = thisWidget.getBasemaps();
+  let arrBasemaps = thisWidget.getBasemaps()
 
-  let inhtml = "";
+  let inhtml = ""
   for (let i = 0; i < arrBasemaps.length; i++) {
-    let layer = arrBasemaps[i];
+    let layer = arrBasemaps[i]
 
-    let vhtml = "";
+    let vhtml = ""
     if (thisWidget.getLayerVisible(layer)) {
-      vhtml = 'class="hover"';
+      vhtml = 'class="hover"'
     }
 
-    let imgsrc = layer.options.icon || "img/basemaps/bingAerial.png";
+    let imgsrc = layer.options.icon || "img/basemaps/bingAerial.png"
 
     inhtml += `<li ${vhtml} onclick="changeBaseMaps(this,'${layer.id}')">
       <div><img src="../../${imgsrc}" /></div><div>${layer.name}</div>
-    </li>`;
+    </li>`
   }
-  $("#basemaps").html(inhtml);
+  $("#basemaps").html(inhtml)
 }
 
 function changeBaseMaps(ele, id) {
   $("#basemaps")
     .children()
     .each(function () {
-      $(this).removeClass("hover");
-    });
+      $(this).removeClass("hover")
+    })
 
-  $(ele).addClass("hover");
+  $(ele).addClass("hover")
 
-  thisWidget.updateBasemap(Number(id));
+  thisWidget.updateBasemap(Number(id))
 }
