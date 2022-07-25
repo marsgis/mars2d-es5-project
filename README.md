@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://muyao1987.gitee.io/cdn/mars2d.cn/logo.png" width="300px" />
+<img src="http://mars2d.cn/logo.png" width="300px" />
 </p>
 
 <p align="center">基于 原生JS下widget模块 的  Mars2D综合态势系统（ES5版）</p>
@@ -31,8 +31,8 @@ Mars2D基础项目 是基于[Mars2D平台](http://mars2d.cn)做的一个应用�
 
 ## 运行效果 
 访问[基础项目在线](http://mars2d.cn/project/jcxm/index.html)体验效果和功能
-
- ![image](https://muyao1987.gitee.io/cdn/mars2d.cn/xm/jcxm/1.jpg)
+ 
+ ![image](http://marsgis.cn/img/project/mars2d-es5-project-jcxm/1.jpg)
 
 
 
@@ -66,7 +66,8 @@ widget模块化设计方式是我们在2016年设计的一种基于传统JS的�
 - `widgets目录`为模块功能目录，也可以按业务分在多个目录中，比如`widgetsTS目录`
 
 
- ![image](https://muyao1987.gitee.io/cdn/mars2d.cn/xm/jcxm/2.jpg) 
+ ![image](http://marsgis.cn/img/project/mars2d-es5-project-jcxm/2.jpg)
+
 
 ### 2.1 下载代码
 目前我们已经开源了基础项目的基础框架和一些部分widget。可以从下面链接下载代码：
