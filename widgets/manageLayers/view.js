@@ -154,8 +154,8 @@ function treeOverlays_onDblClick(event, treeId, treeNode) {
     return
   }
   let layer = layersObj[treeNode.id]
-  if (layer && layer.isAdded && layer.flyTo) {
-    layer.flyTo()
+  if (layer && layer.isAdded) {
+    thisWidget.flyToLayer(layer)
   }
 }
 
