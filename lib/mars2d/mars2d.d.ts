@@ -2,8 +2,8 @@
 /**
  * Mars2D地理信息平台  mars2d
  *
- * 版本信息：v3.1.7
- * 编译日期：2022-10-23 19:00:05
+ * 版本信息：v3.1.9
+ * 编译日期：2022-11-30 09:37:27
  * 版权所有：Copyright by 火星科技  http://mars2d.cn
  * 使用单位：免费公开版 ，2021-10-01
  */
@@ -157,6 +157,10 @@ declare enum EventType {
      * 更新了样式
      */
     updateStyle = "updateStyle",
+    /**
+     * 鼠标右键事件
+     */
+    rightClick = "contextmenu",
     /**
      * 鼠标单击事件
      */
@@ -1682,6 +1686,11 @@ declare class Circle extends L.Circle {
      */
     removeEventParent(obj: any): any | Circle;
     /**
+     * 销毁矢量对象
+     * @returns 无
+     */
+    destroy(): any | void;
+    /**
      * 对象的id标识
      */
     id: string | number;
@@ -3179,6 +3188,11 @@ declare class Marker extends L.Marker {
      */
     removeEventParent(obj: any): any | Marker;
     /**
+     * 销毁矢量对象
+     * @returns 无
+     */
+    destroy(): any | void;
+    /**
      * 对象的id标识
      */
     id: string | number;
@@ -3924,6 +3938,11 @@ declare class Point extends L.CircleMarker {
      */
     removeEventParent(obj: any): any | Point;
     /**
+     * 销毁矢量对象
+     * @returns 无
+     */
+    destroy(): any | void;
+    /**
      * 对象的id标识
      */
     id: string | number;
@@ -4274,6 +4293,11 @@ declare class Polygon extends L.Polygon {
      */
     removeEventParent(obj: any): any | Polygon;
     /**
+     * 销毁矢量对象
+     * @returns 无
+     */
+    destroy(): any | void;
+    /**
      * 对象的id标识
      */
     id: string | number;
@@ -4349,6 +4373,7 @@ declare namespace Polyline {
      * @property [noClip = false] - 禁用折线裁剪
      * @property [interactive = true] - 是否触发鼠标事件，如果false，该层不会发出鼠标事件，并且将作为底层地图的一部分。
      * @property [renderer] - 使用的Renderer 特定实例。优先于地图的默认渲染器。
+     * @property [snakingSpeed = 300] - 在snakeIn方法中的速度（像素/秒）
      * @property [highlight] - 【预留功能，待后续版本开发】鼠标移入或单击(type:'click')后的对应高亮的部分样式，创建Graphic后也可以openHighlight、closeHighlight方法来手动调用
      * @property [label] - 【预留功能，待后续版本开发】支持附带文字的显示
      */
@@ -4366,6 +4391,7 @@ declare namespace Polyline {
         noClip?: boolean;
         interactive?: boolean;
         renderer?: L.Renderer;
+        snakingSpeed?: number;
         highlight?: Polyline.StyleOptions;
         label?: Label.StyleOptions;
     };
@@ -4620,6 +4646,11 @@ declare class Polyline extends L.Polyline {
      * @returns 当前对象本身,可以链式调用
      */
     removeEventParent(obj: any): any | Polyline;
+    /**
+     * 销毁矢量对象
+     * @returns 无
+     */
+    destroy(): any | void;
     /**
      * 对象的id标识
      */
@@ -4982,6 +5013,11 @@ declare class Rectangle extends L.Rectangle {
      * @returns 当前对象本身,可以链式调用
      */
     removeEventParent(obj: any): any | Rectangle;
+    /**
+     * 销毁矢量对象
+     * @returns 无
+     */
+    destroy(): any | void;
     /**
      * 对象的id标识
      */
@@ -8973,10 +9009,8 @@ declare namespace Map {
     };
     /**
      * 控件参数
-     *
-     * 以下是mars2d.control定义的控件
-     * @property [scale = false] - 显示比例尺   {@link L.control.scale}
-     * @property [zoom] - 放大缩小控件   {@link L.control.scale}
+     * @property [scale] - 显示比例尺 {@link L.control.scale}
+     * @property [zoom] - 放大缩小控件 {@link L.control.zoom}
      * @property [zoom.position = "bottomright"] - 控件的位置
      * @property [zoom.zoomInText = "+"] - 在“放大”按钮上设置的显示文本
      * @property [zoom.zoomInTitle = "Zoom in"] - 在“放大”按钮上设置鼠标悬停提示文本
@@ -9001,7 +9035,7 @@ declare namespace Map {
      * @property [toolBar.noLocPoint] - 是否显示定位后的原点
      */
     type controlOptions = {
-        scale?: boolean;
+        scale?: boolean | any;
         zoom?: {
             position?: string;
             zoomInText?: string;
