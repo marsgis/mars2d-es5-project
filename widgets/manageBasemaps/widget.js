@@ -96,16 +96,16 @@
       this.map.remove()
       window.location.href = url
 
-      //=================不刷新页面方式切换不同坐标系的底图======================
-      //if (layer.options.crs == 'EPSG4326') {//影像底图
-      //    map.setCrs(L.CRS.EPSG4326); //更改底图坐标系
-      //    map.setView(center, zoom - 1); //影像底图和海图由于切图标准不同，级别相差一级
-      //} else {
-      //    map.setCrs(L.CRS.EPSG3857);
-      //    map.setView(center, zoom + 1);
-      //}
-      //this.map.options.crs = layer.options.crs;
-      //map.fire('zoomend', layer); //重新渲染,如果不重新渲染，由于坐标系发生变化，矢量数据错位
+      //=================不刷新页面方式切换不同坐标系的底图【仅3857与4326间部分图层时】======================
+      // if (layer.options.crs == "EPSG4326") {
+      //   this.map.crs = L.CRS.EPSG4326 //更改底图坐标系
+      //   this.map.setView(center, zoom - 1) //影像底图和海图由于切图标准不同，级别相差一级
+      // } else {
+      //   this.map.crs = L.CRS.EPSG3857
+      //   this.map.setView(center, zoom + 1)
+      // }
+      // this.map.options.crs = layer.options.crs
+      // this.map.fire("zoomend", layer) //重新渲染,如果不重新渲染，由于坐标系发生变化，矢量数据错位
     }
   }
 
