@@ -24,7 +24,7 @@ Mars2D基础项目 是基于[Mars2D平台](http://mars2d.cn)做的一个应用�
 
 原生JS版 (widget方式) 的特点：
 1. 基于**传统模式原生JS**技术栈下开发的
-2. 使用[mars2d-widget](https://gitee.com/marsgis/mars2d-plugin/tree/master/mars2d-plugin-widget)插件进行模块化封装调用各功能
+2. 使用`\lib\mars2d\thirdParty\es5-widget\es5-widget.js`文件widget机制进行模块化封装调用各功能
 3. 火星科技在传统技术栈时(vue还没成熟流行时)多年来应用于无数项目，归纳总结的一个基础的项目模版
 
 
@@ -126,8 +126,8 @@ npm run serve:dist  //测试dist运行状态
 
 
 
-#### mars2d-widget插件
- 为了更容易理解内部逻辑，您可以下载[mars2d-widget插件源码](https://gitee.com/marsgis/mars2d-plugin) 进行查阅。
+#### es5-widget插件
+ 为了更容易理解内部逻辑，您可以下载[es5-widget插件源码](https://gitee.com/marsgis/mars2d-plugin) 进行查阅。
 
 #### 下载最新lib
  建议从[http://mars2d.cn/download](http://mars2d.cn/download)下载最新mars2d类库后覆盖至`lib/`目录下即可。
