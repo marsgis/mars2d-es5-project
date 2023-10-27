@@ -1,6 +1,6 @@
 ;(function (window, mars2d) {
   //创建widget类，需要继承BaseWidget
-  class MyWidget extends mars2d.widget.BaseWidget {
+  class MyWidget extends es5widget.BaseWidget {
     //外部资源配置
     get resources() {
       return ["view.css"]
@@ -119,14 +119,14 @@
         }
         // console.log('单击了工具栏：' + uri);
 
-        if (mars2d.widget.isActivate(uri)) {
-          mars2d.widget.disable(uri)
+        if (es5widget.isActivate(uri)) {
+          es5widget.disable(uri)
         } else {
           let opt = {
             ...(widgetObj[uri] || {}),
             uri: uri
           }
-          mars2d.widget.activate(opt)
+          es5widget.activate(opt)
         }
       })
     }
@@ -137,7 +137,7 @@
   }
 
   //注册到widget管理器中。
-  mars2d.widget.bindClass(MyWidget)
+  es5widget.bindClass(MyWidget)
 
   //每个widet之间都是直接引入到index.html中，会存在彼此命名冲突，所以闭包处理下。
 })(window, mars2d)
