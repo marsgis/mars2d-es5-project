@@ -169,24 +169,24 @@ npm run serve:dist  //测试dist运行状态
 ## 3. widget初始化及管理
 
  目前平台示例和项目中使用到的[widget.json](http://mars2d.cn/project/jcxm/config/widget.json) 是静态json文件方式
- 文件中配置参数与[mars2d.widget.init方法API](http://mars2d.cn/api/widget.html#.init)的方法参数是完成相同一致的，代码中加载json后传入到init方法中。
+ 文件中配置参数与[es5widget.init方法API](http://mars2d.cn/api/widget.html#.init)的方法参数是完成相同一致的，代码中加载json后传入到init方法中。
  
  widget初始化方法：
  ```js
 //初始化widget管理器
-mars2d.widget.init(map, widgetCfg, './') //tip: 第3个参数支持定义widget目录的相对路径。
+es5widget.init(map, widgetCfg, './') //tip: 第3个参数支持定义widget目录的相对路径。
 ```
 
 ### 3.1 widget的管理
-在外部调用widget功能，都是通过[mars2d.widget静态类](http://mars2d.cn/api/widget.html)来统一管理的，更多方法可以参阅该类的API文档。
+在外部调用widget功能，都是通过[es5widget静态类](http://mars2d.cn/api/widget.html)来统一管理的，更多方法可以参阅该类的API文档。
  
-比如激活widet：在需要外部使用的地方通过 mars2d.widget.activate([参数](http://mars2d.cn/api/widget.html#.WidgetOptions)) 来激活widget模块, 参数支持多种模式可多样化兼容使用, 比如：
+比如激活widet：在需要外部使用的地方通过 es5widget.activate([参数](http://mars2d.cn/api/widget.html#.WidgetOptions)) 来激活widget模块, 参数支持多种模式可多样化兼容使用, 比如：
  ```js
 //常用，直接使用uri
-mars2d.widget.activate("widgets/bookmark/widget.js"); 
+es5widget.activate("widgets/bookmark/widget.js"); 
 
 //支持所有可配参数和自定义参数，在widget.js内部通过this.config可获取传入的参数
-mars2d.widget.activate({name:"书签", uri: "widgets/bookmark/widget.js "}); 
+es5widget.activate({name:"书签", uri: "widgets/bookmark/widget.js "}); 
 ```
 
 
@@ -309,7 +309,7 @@ widget激活后页面执行流程:
 
   ```js  
 showDetails(item) { 
-      mars2d.widget.activate({
+      es5widget.activate({
          uri: 'widgetsTS/qyDetailsView/widget.js',
          dataQy: item,
       })
@@ -328,19 +328,19 @@ getData() {
 
 ## 4.5 不同widget之间的通信交互示例
  
-可以利用mars2d.widget作为桥梁，通过事件的方式交互，这种比较自由方便，注意项目内**事件名称唯一**即可。
+可以利用es5widget作为桥梁，通过事件的方式交互，这种比较自由方便，注意项目内**事件名称唯一**即可。
 
 ```js  
 //演示：抛出事件，在其他widget或vue中监听使用  widgets\centerXY\widget.js
-mars2d.widget.fire("centerXY",{position:position })
+es5widget.fire("centerXY",{position:position })
 
 //演示：接收的widget内抛出的事件  js、vue或其他widget.js中
-mars2d.widget.on('centerXY', function (event) {
+es5widget.on('centerXY', function (event) {
    console.log('在widget进行了坐标定位1', event)
 })
 
 //如果在弹窗的view.js中
-parent.mars2d.widget.on('centerXY', function (event) {
+parent.es5widget.on('centerXY', function (event) {
    console.log('在widget进行了坐标定位2', event)
 })
 
@@ -359,14 +359,14 @@ parent.mars2d.widget.on('centerXY', function (event) {
 //持续更新
 updateCharsWidgeFlyOk(alllen) { 
    //抛出事件
-   mars2d.widget.fire("updateRoamChars",{ data:alllen })
+   es5widget.fire("updateRoamChars",{ data:alllen })
 }
 ```
 roamChars模块中监听事件
 ```js 
 create() {
    //接收roamFly的widget内抛出的事件
-   mars2d.widget.on('updateRoamChars', function (event) {
+   es5widget.on('updateRoamChars', function (event) {
       console.log('接收到了数据', data)
    })
 }
@@ -385,10 +385,10 @@ A、B两个都是iframe弹窗模式的widget模块时，在A模块中的view.htm
 如果通过事件方式可以下面的方式：
 ```js  
 //演示：在A模块中的view.html中抛出事件
-parent.mars2d.widget.fire("widget2widget",{ data: position })
+parent.es5widget.fire("widget2widget",{ data: position })
 
 //演示：如果在弹窗的view.js中
-parent.mars2d.widget.on('widget2widget', function (event) {
+parent.es5widget.on('widget2widget', function (event) {
    console.log('接收到了A模块抛出的事件', event)
 })
 
