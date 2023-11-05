@@ -101,7 +101,7 @@ function initWidget(map) {
       }
 
       //初始化widget管理器
-      mars2d.widget.init(map, widgetCfg, "./") //tip: 第3个参数支持定义widget目录的相对路径。
+      es5widget.init(map, widgetCfg, "./") //tip: 第3个参数支持定义widget目录的相对路径。
 
       if (lastWidgetItem) {
         activateWidget(lastWidgetItem)
@@ -122,16 +122,16 @@ function activateWidget(item) {
     lastWidgetItem = item
     return
   }
-  mars2d.widget.activate(item)
+  es5widget.activate(item)
 }
 function disableWidget(item) {
-  mars2d.widget.disable(item)
+  es5widget.disable(item)
 }
 function activateFunByMenu(fun) {
   eval(fun)
 }
 
 function flyHome() {
-  mars2d.widget.disableAll()
+  es5widget.disableAll()
   map.flyHome()
 }
