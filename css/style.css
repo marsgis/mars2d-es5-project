@@ -124,6 +124,11 @@ img {
   color: #fff !important;
 }
 
+.leaflet-container a.leaflet-popup-close-button,
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+  color: #fff;
+}
 
 /*解决问题：https://github.com/Leaflet/Leaflet/issues/3575**/
 /* .leaflet-tile-container img {
