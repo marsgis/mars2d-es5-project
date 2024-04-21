@@ -166,7 +166,6 @@
         }
       }
     },
-
     {
       "name": "POI周边查询",
       "uri": "widgetsTS/queryGaodePOICircle/widget.js",
