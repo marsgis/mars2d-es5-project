@@ -13,7 +13,7 @@
 
     //初始化[仅执行1次]
     create() {
-      this.data = window.toolBarMenuData || [
+      this.data = [
         { name: "底图", icon: "fa fa-map", widget: "widgets/manageBasemaps/widget.js" },
         { name: "图层", icon: "fa fa-tasks", widget: "widgets/manageLayers/widget.js" },
         {
@@ -32,8 +32,7 @@
             { name: "图上标绘", icon: "fa fa-object-group", widget: "widgets/plot/widget.js" },
 
             { name: "卷帘对比", icon: "fa fa-columns", widget: "widgets/mapSplit/widget.js" },
-            { name: "分屏对比", icon: "fa fa-window-restore", widget: "widgets/mapCompare/widget.js" },
-            { name: "百度街景", icon: "fa fa-street-view", widget: "widgets/streetscape/widget.js" }
+            { name: "分屏对比", icon: "fa fa-window-restore", widget: "widgets/mapCompare/widget.js" }
           ]
         }
       ]

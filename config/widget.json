@@ -1,5 +1,5 @@
 {
-  "version": "20210825",
+  "version": "20250101",
   "defaultOptions": {
     "windowOptions": {
       "skin": "animation-fade",
@@ -166,6 +166,18 @@
         }
       }
     },
+    {
+      "name": "台风路径",
+      "uri": "widgetsTS/showTaiFeng/widget.js",
+      "windowOptions": {
+        "position": {
+          "top": 55,
+          "right": 5,
+          "bottom": 5
+        }
+      }
+    },
+
     {
       "name": "POI周边查询",
       "uri": "widgetsTS/queryGaodePOICircle/widget.js",
