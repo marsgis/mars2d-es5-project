@@ -1,6 +1,6 @@
 {
   "name": "mars2d-es5-project",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Mars2D平台基础项目",
   "main": "index.js",
   "private": true,
