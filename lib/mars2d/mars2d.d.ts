@@ -3,7 +3,7 @@
  * Mars2D地理信息平台  mars2d
  *
  * 版本信息：v3.3.3
- * 编译日期：2025-07-02 18:06
+ * 编译日期：2025-08-03 20:06
  * 版权所有：Copyright by 火星科技  http://mars2d.cn
  * 使用单位：免费公开版 ，2024-01-16
  */
@@ -2371,26 +2371,10 @@ declare class DrawPolyline extends BaseDraw {
 }
 
 /**
- * 面  对象标绘处理类
- * @param [options.id] - 矢量数据id标识
- */
-declare class DrawRain extends DrawPolyline {
-    constructor();
-}
-
-/**
  * 矩形 对象标绘处理类
  * @param [options.id] - 矢量数据id标识
  */
 declare class DrawRectangle extends BaseSimpleShape {
-    constructor();
-}
-
-/**
- * 面  对象标绘处理类
- * @param [options.id] - 矢量数据id标识
- */
-declare class DrawSnow extends DrawPolyline {
     constructor();
 }
 
@@ -4739,15 +4723,6 @@ declare namespace Polyline {
      * @property [interactive = true] - 是否触发鼠标事件，如果false，该层不会发出鼠标事件，并且将作为底层地图的一部分。
      * @property [renderer] - 使用的Renderer 特定实例。优先于地图的默认渲染器。
      * @property [snakingSpeed = 300] - 在snakeIn方法中的速度（像素/秒）
-     * @property [text] - 设置线上标注的文本
-     * @property [textOptions] - 线上标注的文本的参数
-     * @property [textOptions.orientation] - 旋转角度
-     * @property [textOptions.repeat] - 是否重复
-     * @property [textOptions.gap] - 重复的间隔空闲个数
-     * @property [textOptions.offset] - 在线宽度的偏移值
-     * @property [textOptions.below] - 在路径下方显示文本
-     * @property [textOptions.center] - 根据折线的边界框将文本居中
-     * @property [textOptions.attributes] - SVG的setAttribute支持的所有属性值
      * @property [highlight] - 【预留功能，待后续版本开发】鼠标移入或单击(type:'click')后的对应高亮的部分样式，创建Graphic后也可以openHighlight、closeHighlight方法来手动调用
      * @property [label] - 支持附带文字的显示
      */
@@ -4767,16 +4742,6 @@ declare namespace Polyline {
         interactive?: boolean;
         renderer?: L.Renderer;
         snakingSpeed?: number;
-        text?: string;
-        textOptions?: {
-            orientation?: number;
-            repeat?: boolean;
-            gap?: boolean;
-            offset?: number;
-            below?: boolean;
-            center?: boolean;
-            attributes?: any;
-        };
         highlight?: Polyline.StyleOptions;
         label?: Label.StyleOptions;
     };
@@ -4869,6 +4834,11 @@ declare class Polyline extends L.Polyline {
      * @returns 当前对象本身，可以链式调用
      */
     redraw(): any | Polyline;
+    /**
+     * 将线移动到所有路径层的顶部
+     * @returns 当前对象本身,可以链式调用
+     */
+    bringToFront(): any | Polyline;
     /**
      * 将线移动到所有路径层的底部
      * @returns 当前对象本身,可以链式调用
@@ -5104,72 +5074,6 @@ declare class Polyline extends L.Polyline {
      * @returns 当前对象本身，可以链式调用
      */
     setOffset(offset: number): any | Polyline;
-    /**
-     * 将线移动到所有路径层的顶部
-     * @returns 当前对象本身,可以链式调用
-     */
-    bringToFront(): any | Polyline;
-}
-
-declare namespace Rain {
-    /**
-     * 雨 支持的样式信息
-     * @property [color = '#3388ff'] - 颜色
-     * @property [angle = 16] - 角度
-     * @property [width = 1] - 宽度
-     * @property [length = 4] - 长度
-     * @property [spacing = 10] - 水平空隙
-     * @property [interval = 10] - 垂直空隙
-     * @property [speed = 1] - 速度
-     */
-    type StyleOptions = {
-        color?: string;
-        angle?: number;
-        width?: number;
-        length?: number;
-        spacing?: number;
-        interval?: number;
-        speed?: number;
-    };
-}
-
-/**
- * 雨 矢量对象
- * @param options - 参数对象，包括以下：
- * @param options.latlng - 坐标位置
- * @param [options.style] - 样式参数
- * @param [options.id] - 矢量数据id标识
- */
-declare class Rain extends Polygon {
-    constructor(options: {
-        latlng: L.LatLng | number[];
-        style?: Rain.StyleOptions;
-        id?: string | number;
-    });
-    /**
-     * 重新绘制。在更改路径所使用的坐标之后会很有用。
-     * @returns 当前对象本身，可以链式调用
-     */
-    redraw(): any | Polygon;
-    /**
-     * 将图层添加到地图
-     * @param map - 地图对象
-     * @returns 当前对象本身，可以链式调用
-     */
-    addTo(map: Map | any): any | Polygon;
-    /**
-     * 用给定的地理位置数组代替更新矢量对象中的所有点。
-     * @param latlngs - 经纬度数组
-     * @param [updateEditeMarkers = true] - 是否在编辑状态更新编辑点
-     * @returns 当前对象本身，可以链式调用
-     */
-    setLatLngs(latlngs: L.LatLng[], updateEditeMarkers?: boolean): any | Polygon;
-    /**
-     * 设置 样式信息 的钩子方法
-     * @param newStyle - 本次更新的部分样式信息,内部会合并属性
-     * @returns 当前对象本身，可以链式调用
-     */
-    setStyle(newStyle: any | Polygon.StyleOptions): any | Polygon;
 }
 
 declare namespace Rectangle {
@@ -5555,47 +5459,6 @@ declare class Rectangle extends L.Rectangle {
      * @returns 是否在矩形内
      */
     isInPoly(latlng: L.LatLng): any | boolean;
-}
-
-declare namespace Snow {
-    /**
-     * 雪 支持的样式信息
-     * @property [speed = 150] - 速度
-     * @property [layersCount = 5] - 层数
-     * @property [density = 4] - 密度
-     * @property [size = 12] - 大小
-     * @property [color = '#ffffff'] - 颜色
-     * @property [opacity = 0.5] - 透明度
-     */
-    type StyleOptions = {
-        speed?: number;
-        layersCount?: number;
-        density?: number;
-        size?: number;
-        color?: string;
-        opacity?: number;
-    };
-}
-
-/**
- * 雪 矢量对象
- * @param options - 参数对象，包括以下：
- * @param options.latlng - 坐标位置
- * @param [options.style] - 样式参数
- * @param [options.id] - 矢量数据id标识
- */
-declare class Snow extends Polygon {
-    constructor(options: {
-        latlng: L.LatLng | number[];
-        style?: Snow.StyleOptions;
-        id?: string | number;
-    });
-    /**
-     * 设置 样式信息 的钩子方法
-     * @param newStyle - 本次更新的部分样式信息,内部会合并属性
-     * @returns 当前对象本身，可以链式调用
-     */
-    setStyle(newStyle: any | Polygon.StyleOptions): any | Polygon;
 }
 
 declare namespace BusineDataLayer {
@@ -13733,8 +13596,6 @@ declare namespace graphic {
   export { DrawDivGraphic }
   export { DrawPolyline }
   export { DrawPolygon }
-  export { DrawRain }
-  export { DrawSnow }
   export { DrawBrushLine }
   export { DrawDistanceMeasure }
   export { DrawAreaMeasure }
