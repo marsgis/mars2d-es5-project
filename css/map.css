@@ -1,6 +1,24 @@
 /*
-* index页面css
+* map页面css（地图主页面）
 */
+/** ============================================================
+ * 全站设计变量（Design Tokens）
+ * 注意：同一套变量已同步维护在 css/index.css、css/login.css、
+ * css/map.css、css/widget-win.css 四个文件中，修改需四处同步。
+ * 使用方式（兼容旧浏览器双写）：先写字面量回退值，再写 var()。
+ * ============================================================ */
+:root {
+  --mars-color-primary: #2468f1;            /* 主色：按钮、链接、强调 */
+  --mars-color-primary-hover: #1d5ad6;      /* 主色悬停态 */
+  --mars-color-header: #25a5f7;             /* 顶部导航背景（themeBlue） */
+  --mars-color-text: #333;                  /* 主文字 */
+  --mars-color-text-secondary: #76838f;     /* 次级文字 */
+  --mars-color-text-muted: #999;            /* 弱化文字 */
+  --mars-color-border: #d8dde1;             /* 通用边框 */
+  --mars-radius-base: 4px;                  /* 通用圆角 */
+  --mars-shadow-panel: 0 4px 24px rgba(0, 0, 0, .15); /* 浮动面板阴影 */
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -46,13 +64,15 @@ textarea {
 }
 
 a {
-  color: #62a8ea;
+  color: #2468f1;
+  color: var(--mars-color-primary);
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #89bceb;
+  color: #1d5ad6;
+  color: var(--mars-color-primary-hover);
   text-decoration: underline;
 }
 
@@ -118,9 +138,10 @@ img {
   z-index: 9999;
 }
 
-/*弹出层皮肤*/
+/*弹出层皮肤：标题栏与顶部导航统一使用 themeBlue 亮色（--mars-color-header）*/
 .layui-layer-title {
-  background-color: #1e9fff !important;
+  background-color: #25a5f7 !important;
+  background-color: var(--mars-color-header) !important;
   color: #fff !important;
 }
 

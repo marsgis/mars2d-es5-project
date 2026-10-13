@@ -128,6 +128,8 @@ function disableWidget(item) {
   es5widget.disable(item)
 }
 function activateFunByMenu(fun) {
+  //注意：fun 为 config/menu.json 中配置的回调字符串（如 "activateWidget({...})"），
+  //此处用 eval 执行；存在配置被篡改的注入风险，后续可考虑改为函数映射表方式。
   eval(fun)
 }
 

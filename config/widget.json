@@ -1,5 +1,5 @@
 {
-  "version": "20250101",
+  "version": "20261013",
   "defaultOptions": {
     "windowOptions": {
       "skin": "animation-fade",
@@ -20,7 +20,7 @@
       "uri": "widgets/toolBarRight/widget.js"
     },
     {
-      "name": "百度POI查询",
+      "name": "高德POI查询",
       "uri": "widgets/queryGaodePOI/widget.js"
     },
     {
@@ -169,18 +169,6 @@
     {
       "name": "台风路径",
       "uri": "widgetsTS/showTaiFeng/widget.js",
-      "windowOptions": {
-        "position": {
-          "top": 55,
-          "right": 5,
-          "bottom": 5
-        }
-      }
-    },
-
-    {
-      "name": "POI周边查询",
-      "uri": "widgetsTS/queryGaodePOICircle/widget.js",
       "windowOptions": {
         "position": {
           "top": 55,

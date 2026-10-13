@@ -21,7 +21,14 @@
     activate() {}
     //释放插件
     disable() {
-      this.map.graphicLayer.removeGraphic(this.pointEntity)
+      //移除可能残留的图上拾取监听，避免关闭面板后点击地图仍触发回调
+      if (this._mapClickHandler) {
+        this.map.off(mars2d.EventType.click, this._mapClickHandler)
+        this._mapClickHandler = null
+      }
+      if (this.pointEntity) {
+        this.map.graphicLayer.removeGraphic(this.pointEntity)
+      }
       this.pointEntity = null
       this.viewWindow = null
     }
@@ -43,7 +50,11 @@
     }
 
     bindMourseClick(callback) {
-      this.map.once(mars2d.EventType.click, (event) => {
+      //重复点击"图上拾取"时，先移除上一次未触发的监听，避免once回调累积
+      if (this._mapClickHandler) {
+        this.map.off(mars2d.EventType.click, this._mapClickHandler)
+      }
+      this._mapClickHandler = (event) => {
         let coordinate = event.latlng //经纬度坐标
 
         callback(coordinate.lng, coordinate.lat)
@@ -71,7 +82,9 @@
         }
         //end
         this.viewWindow.updateMarker()
-      })
+      }
+      //注册一次性地图单击监听
+      this.map.once(mars2d.EventType.click, this._mapClickHandler)
     }
 
     flyToGraphic(pointEntity) {

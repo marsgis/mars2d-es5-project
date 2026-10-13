@@ -2,7 +2,7 @@
   "name": "mars2d-es5-project",
   "version": "3.4.0",
   "description": "Mars2D平台基础项目",
-  "main": "index.js",
+  "main": "js/index.js",
   "private": true,
   "scripts": {
     "lint": "eslint ./widgets*/**/*.{js,html} --fix",
@@ -42,8 +42,7 @@
     "through2": "^2.0.0",
     "uglify-js": "^3.6.0",
     "vinyl": "^2.2.0",
-    "prettier": "^2.2.1",
-    "uglify-js": "^3.6.0"
+    "prettier": "^2.2.1"
   },
   "repository": {
     "type": "git",
@@ -55,11 +54,10 @@
   },
   "keywords": [
     "marsgis",
-    "mars3d",
-    "cesium",
-    "webgl",
+    "mars2d",
+    "leaflet",
     "gis",
-    "3dgis",
+    "2dgis",
     "webgis"
   ],
   "author": "Mars2D",

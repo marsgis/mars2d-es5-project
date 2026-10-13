@@ -35,7 +35,7 @@
           return false
         }
 
-        let inHtml = `<div class="mars2d-template-titile"><a href="https://www.amap.com/detail/${item.id}"  target="_black" style="color: #ffffff; ">${item.name}</a></div><div class="mars2d-template-content" >`
+        let inHtml = `<div class="mars2d-template-titile"><a href="https://www.amap.com/detail/${item.id}"  target="_blank" style="color: #ffffff; ">${item.name}</a></div><div class="mars2d-template-content" >`
 
         let phone = $.trim(item.tel)
         if (phone != "") {
@@ -90,12 +90,13 @@
         }
       })
 
-      let timetik = 0
+      //输入防抖定时器挂到实例上，便于disable()时清理
+      this.timetik = 0
 
       // 搜索框绑定文本框值发生变化,隐藏默认搜索信息栏,显示匹配结果列表
       $("#txt_querypoi").bind("input propertychange", () => {
-        clearTimeout(timetik)
-        timetik = setTimeout(() => {
+        clearTimeout(this.timetik)
+        this.timetik = setTimeout(() => {
           this.hideAllQueryBarView()
           this.clearLayers()
 
@@ -111,7 +112,7 @@
 
       // 点击搜索查询按钮
       $("#btn_querypoi").click(() => {
-        clearTimeout(timetik)
+        clearTimeout(this.timetik)
         this.hideAllQueryBarView()
 
         let queryVal = $.trim($("#txt_querypoi").val())
@@ -148,6 +149,9 @@
     }
     //关闭释放
     disable() {
+      //清除输入防抖定时器，避免关闭后回调仍执行
+      clearTimeout(this.timetik)
+
       this.map.removeLayer(this.graphicLayer)
 
       //释放单击地图事件
@@ -262,7 +266,7 @@
 
       //查询外部widget
       if (this.hasExWidget() && queryEx) {
-        let qylist = this.queryExPOI(text)
+        this.queryExPOI(text)
         return
       }
       //查询外部widget
@@ -493,6 +497,21 @@
     }
 
     //===================历史记录相关========================
+    //安全解析历史记录（localforage一般直接返回数组，兼容历史遗留的字符串存储）
+    _parseHistory(laststorage) {
+      if (laststorage instanceof Array) {
+        return laststorage
+      }
+      if (typeof laststorage === "string") {
+        try {
+          let arr = JSON.parse(laststorage)
+          return arr instanceof Array ? arr : []
+        } catch (e) {
+          return []
+        }
+      }
+      return []
+    }
     showHistoryList() {
       $("#querybar_histroy_view").hide()
 
@@ -501,7 +520,7 @@
           return
         }
 
-        this.arrHistory = eval(laststorage)
+        this.arrHistory = this._parseHistory(laststorage)
         if (this.arrHistory == null || this.arrHistory.length == 0) {
           return
         }
@@ -529,7 +548,7 @@
       this.arrHistory = []
       localforage.getItem(this.storageName).then((laststorage) => {
         if (laststorage != null) {
-          this.arrHistory = eval(laststorage)
+          this.arrHistory = this._parseHistory(laststorage)
         }
         //先删除之前相同记录
         haoutil.array.remove(this.arrHistory, data)

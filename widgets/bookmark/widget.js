@@ -30,8 +30,11 @@
     getDefaultExtent() {
       let center = this.map.options.center
       let zoom = this.map.options.zoom
-      let bounds = center[0] + "," + center[1] + "," + zoom
-      return bounds
+      //兼容 config 中 center 为对象 {lng, lat} 或数组 [lng, lat] 两种格式
+      if (center instanceof Array) {
+        return center[0] + "," + center[1] + "," + zoom
+      }
+      return center.lng + "," + center.lat + "," + zoom
     }
     getThisExtent() {
       let center = this.map.getCenter()

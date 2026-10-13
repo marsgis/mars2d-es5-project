@@ -2,16 +2,16 @@
 <img src="http://mars2d.cn/logo.png" width="300px" />
 </p>
 
-<p align="center">基于 原生JS下widget模块 的  Mars2D综合态势系统（ES5版）</p>
+<p align="center">基于 原生JS下widget模块 的  Mars2D基础项目（ES5版）</p>
 
 <p align="center">
-<a target="_black" href="https://github.com/marsgis/mars2d">
+<a target="_blank" href="https://github.com/marsgis/mars2d">
 <img alt="GitHub stars" src="https://img.shields.io/github/stars/marsgis/mars2d?style=flat&logo=github">
 </a>
-<a target="_black" href="https://www.npmjs.com/package/mars2d">
+<a target="_blank" href="https://www.npmjs.com/package/mars2d">
 <img alt="Npm downloads" src="https://img.shields.io/npm/dt/mars2d?style=flat&logo=npm">
 </a>
-<a target="_black" href="https://www.npmjs.com/package/mars2d">
+<a target="_blank" href="https://www.npmjs.com/package/mars2d">
 <img alt="Npm version" src="https://img.shields.io/npm/v/mars2d.svg?style=flat&logo=npm&label=version"/>
 </a>
 </p>
@@ -20,7 +20,7 @@
  
 ## 项目介绍
 
-Mars2D基础项目 是基于[Mars2D平台](http://mars2d.cn)做的一个应用系统，提供的一个基础项目模版，包含常用基础地图功能，可在该基础项目上快速开发搭建新项目。方便快速搭建三维地图产品，敏捷开发，可复用，支持各种配置，适合各种场景使用。
+Mars2D基础项目 是基于[Mars2D平台](http://mars2d.cn)做的一个应用系统，提供的一个基础项目模版，包含常用基础地图功能，可在该基础项目上快速开发搭建新项目。方便快速搭建二维地图产品，敏捷开发，可复用，支持各种配置，适合各种场景使用。
 
 原生JS版 (widget方式) 的特点：
 1. 基于**传统模式原生JS**技术栈下开发的
@@ -107,9 +107,10 @@ widget模块化设计方式是我们在2016年设计的一种基于传统JS的�
 #### 首次运行前安装依赖
 ```
 npm install
-
-//或使用代理
-npm i --registry=http://registry.taobao.org
+```
+```
+# 或使用国内镜像源
+npm i --registry=https://registry.npmmirror.com
 ```
 
 #### 启动开发环境
@@ -150,15 +151,11 @@ npm run serve:dist  //测试dist运行状态
 该方式等价于（如不习惯include-lib.js，也可以改为下面演示的直接引入方式）： 
 
 ```html
-<!--对应font-awesome-->
-<link rel="stylesheet" href="../lib/fonts/font-awesome/css/font-awesome.min.css">
+<!--对应leaflet-->
+<link rel="stylesheet" href="../lib/leaflet/leaflet.css">
+<script type="text/javascript" src="../lib/leaflet/leaflet.js"></script>
 
-<!--对应turf-->
-<script type="text/javascript" src="../lib/turf/turf.min.js"></script>
-
-<!--对应mars3d-->
-<link rel="stylesheet" href="../lib/Cesium/Widgets/widgets.css">
-<script type="text/javascript" src="../lib/Cesium/Cesium.js"></script>
+<!--对应mars2d-->
 <link rel="stylesheet" href="../lib/mars2d/mars2d.css">
 <script type="text/javascript" src="../lib/mars2d/mars2d.js"></script>
 ```
