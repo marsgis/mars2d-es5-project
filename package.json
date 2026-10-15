@@ -36,7 +36,6 @@
     "gulp-uglify": "^3.0.2",
     "gulp-utf8-convert": "0.0.7",
     "gulp-util": "^3.0.8",
-    "mars3d": "^3.2.0",
     "javascript-obfuscator": "^0.28.5",
     "plugin-error": "^1.0.1",
     "through2": "^2.0.0",
@@ -46,10 +45,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/marsgis/mars3d-es5-project.git"
+    "url": "https://github.com/marsgis/mars2d-es5-project.git"
   },
   "bugs": {
-    "url": "https://github.com/marsgis/mars3d-es5-project/issues",
+    "url": "https://github.com/marsgis/mars2d-es5-project/issues",
     "email": "wh@marsgis.cn"
   },
   "keywords": [
@@ -62,5 +61,5 @@
   ],
   "author": "Mars2D",
   "license": "Apache-2.0",
-  "homepage": "http://mars3d.cn"
+  "homepage": "http://mars2d.cn"
 }
