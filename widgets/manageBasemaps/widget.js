@@ -51,7 +51,7 @@
       // this._workCRS(layerId) //需要时再启用
 
       this.map.basemap = layerId
-      this.disableBase()
+      // this.disableBase() // 切换底图时不用自动关闭弹窗，方便对比效果
     }
 
     //处理CRS坐标系不同的底图之间切换
