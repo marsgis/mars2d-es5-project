@@ -14,7 +14,7 @@ const cheerio = require("gulp-cheerio")
 const cssmin = require("gulp-clean-css")
 const obfuscator = require("javascript-obfuscator")
 
-const through2 = require("through2")
+const { Transform } = require("node:stream")
 const Vinyl = require("vinyl")
 const JavaScriptObfuscator = require("javascript-obfuscator")
 const PluginError = require("plugin-error")
@@ -80,7 +80,7 @@ var optsObfuscator = {
   deadCodeInjectionThreshold: 0.4, //死代码块的影响概率
 
   debugProtection: false, //是否禁止使用 F12开发者工具的控制台选项卡，可以用来在线代码的禁止别人调试
-  debugProtectionInterval: false, //如果选中，则会在“控制台”选项卡上使用间隔强制调试模式，从而更难使用“开发人员工具”的其他功能。
+  debugProtectionInterval: 0, //毫秒数，>0 时会在“控制台”选项卡上使用间隔强制调试模式（需 debugProtection 开启）
   disableConsoleOutput: false, //是否禁止使用的console.log，console.info，console.error和console.warn。这使得调试器的使用更加困难。
   domainLock: [], //锁定混淆的源代码，使其仅在特定域和/或子域上运行。这使得某人只需复制并粘贴您的源代码并在其他地方运行就变得非常困难。
 
@@ -88,7 +88,7 @@ var optsObfuscator = {
   selfDefending: false, //【如果报错，改为false】使输出代码可抵抗格式设置和变量重命名。如果尝试在混淆后的代码上使用JavaScript美化器，则该代码将无法再使用，从而使其难以理解和修改。
 
   stringArray: true, //删除字符串文字并将它们放在一个特殊的数组中
-  stringArrayEncoding: "base64", //'rc4'  > 'base64'
+  stringArrayEncoding: ["base64"], //'rc4'  > 'base64'
   stringArrayThreshold: 0.75,
 
   transformObjectKeys: false //启用对象键的转换
@@ -350,41 +350,44 @@ function throwOnlyCopy(srcPath, pathname, outFilePath, message) {
 }
 
 function obfuscatorGulp(options = {}) {
-  return through2.obj(function (file, enc, cb) {
-    if (file.isNull()) {
-      return cb(null, file)
-    }
-    if (!file.isBuffer()) {
-      throw new PluginError("gulp-javascript-obfuscator", "Only Buffers are supported!")
-    }
-    if (file.sourceMap) {
-      options.sourceMap = true
-      options.inputFileName = file.relative
-      options.sourceMapMode = "separate"
-    }
-
-    try {
-      const obfuscationResult = JavaScriptObfuscator.obfuscate(String(file.contents), options)
-      file.contents = Buffer.from(obfuscationResult.getObfuscatedCode())
-      if (options.sourceMap && options.sourceMapMode !== "inline") {
-        if (file.sourceMap) {
-          const sourceMap = JSON.parse(obfuscationResult.getSourceMap())
-          sourceMap.file = file.sourceMap.file
-          applySourceMap(file, sourceMap)
-        } else {
-          this.push(
-            new Vinyl({
-              cwd: file.cwd,
-              base: file.base,
-              path: file.path + ".map",
-              contents: Buffer.from(obfuscationResult.getSourceMap())
-            })
-          )
-        }
+  return new Transform({
+    objectMode: true,
+    transform(file, enc, cb) {
+      if (file.isNull()) {
+        return cb(null, file)
       }
-      return cb(null, file)
-    } catch (err) {
-      throw new PluginError("gulp-javascript-obfuscator", err)
+      if (!file.isBuffer()) {
+        throw new PluginError("gulp-javascript-obfuscator", "Only Buffers are supported!")
+      }
+      if (file.sourceMap) {
+        options.sourceMap = true
+        options.inputFileName = file.relative
+        options.sourceMapMode = "separate"
+      }
+
+      try {
+        const obfuscationResult = JavaScriptObfuscator.obfuscate(String(file.contents), options)
+        file.contents = Buffer.from(obfuscationResult.getObfuscatedCode())
+        if (options.sourceMap && options.sourceMapMode !== "inline") {
+          if (file.sourceMap) {
+            const sourceMap = JSON.parse(obfuscationResult.getSourceMap())
+            sourceMap.file = file.sourceMap.file
+            applySourceMap(file, sourceMap)
+          } else {
+            this.push(
+              new Vinyl({
+                cwd: file.cwd,
+                base: file.base,
+                path: file.path + ".map",
+                contents: Buffer.from(obfuscationResult.getSourceMap())
+              })
+            )
+          }
+        }
+        return cb(null, file)
+      } catch (err) {
+        throw new PluginError("gulp-javascript-obfuscator", err)
+      }
     }
   })
 }
