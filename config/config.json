@@ -176,7 +176,7 @@
       "pid": 4030,
       "name": "规划图",
       "type": "pbf",
-      "url": "http://server.mars2d.cn/geoserver/gwc/service/tms/1.0.0/mars%3Ahfgh3857@EPSG%3A3857@pbf/{z}/{x}/{-y}.pbf",
+      "url": "//server.mars2d.cn/geoserver/gwc/service/tms/1.0.0/mars%3Ahfgh3857@EPSG%3A3857@pbf/{z}/{x}/{-y}.pbf",
       "interactive": true,
       "style": {
         "color": "rgba(110, 110, 110, 255)",
@@ -200,12 +200,12 @@
       "pid": 4020,
       "name": "教育设施点",
       "type": "wms",
-      "url": "http://server.mars2d.cn/geoserver/mars/wms",
+      "url": "//server.mars2d.cn/geoserver/mars/wms",
       "layers": "mars:hfjy",
       "transparent": true,
       "format": "image/png",
       "compare": {
-        "url": "http://server.mars2d.cn/geoserver/mars/wms",
+        "url": "//server.mars2d.cn/geoserver/mars/wms",
         "layers": "mars:hfdl"
       }
     },
@@ -214,7 +214,7 @@
       "pid": 4020,
       "name": "道路线",
       "type": "wms",
-      "url": "http://server.mars2d.cn/geoserver/mars/wms",
+      "url": "//server.mars2d.cn/geoserver/mars/wms",
       "layers": "mars:hfdl",
       "transparent": true,
       "format": "image/png"
@@ -223,7 +223,7 @@
       "pid": 4020,
       "name": "建筑物面",
       "type": "wms",
-      "url": "http://server.mars2d.cn/geoserver/mars/wms",
+      "url": "//server.mars2d.cn/geoserver/mars/wms",
       "layers": "mars:hfjzw",
       "transparent": true,
       "format": "image/png"
@@ -233,7 +233,7 @@
       "pid": 4020,
       "name": "规划面",
       "type": "wms",
-      "url": "http://server.mars2d.cn/geoserver/mars/wms",
+      "url": "//server.mars2d.cn/geoserver/mars/wms",
       "layers": "mars:hfgh",
       "transparent": true,
       "format": "image/png"
@@ -249,7 +249,7 @@
       "pid": 4010,
       "name": "规划图",
       "type": "arcgis_dynamic",
-      "url": "http://server.mars2d.cn/arcgis/rest/services/mars/guihua/MapServer",
+      "url": "//server.mars2d.cn/arcgis/rest/services/mars/guihua/MapServer",
       "opacity": 0.7,
       "highlight": {
         "fill": true,
@@ -266,7 +266,7 @@
       "pid": 4010,
       "name": "建筑物",
       "type": "arcgis_dynamic",
-      "url": "http://server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer",
+      "url": "//server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer",
       "layers": [37],
       "highlight": {
         "fill": false,
@@ -281,7 +281,7 @@
       "pid": 4010,
       "name": "道路",
       "type": "arcgis_dynamic",
-      "url": "http://server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer",
+      "url": "//server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer",
       "layers": [24],
       "popup": "{NAME}"
     },
@@ -301,7 +301,7 @@
       "pid": 3030,
       "name": "全国省界",
       "type": "geojson",
-      "url": "http://data.mars2d.cn/file/geojson/areas/100000_full.json",
+      "url": "//data.mars2d.cn/file/geojson/areas/100000_full.json",
       "symbol": {
         "type": "polyline",
         "styleOptions": {
@@ -367,7 +367,7 @@
       "pid": 3010,
       "name": "加油站",
       "type": "arcgis_feature",
-      "url": "http://server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/10",
+      "url": "//server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/10",
       "popup": "<p>名称:{NAME}<br>地址:{address}</p>",
       "symbol": {
         "styleOptions": {
@@ -381,7 +381,7 @@
       "pid": 3010,
       "name": "服务区",
       "type": "arcgis_feature",
-      "url": "http://server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/16",
+      "url": "//server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/16",
       "popup": [
         { "field": "NAME", "name": "名称" },
         { "field": "address", "name": "地址" }
@@ -409,7 +409,7 @@
       "pid": 3010,
       "name": "收费站",
       "type": "arcgis_feature",
-      "url": "http://server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/15",
+      "url": "//server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/15",
       "popup": {
         "type": "iframe",
         "url": "http://www.marsgis.cn/?id={FID}&name={NAME}",
@@ -436,7 +436,7 @@
       "pid": 3010,
       "name": "铁路",
       "type": "arcgis_feature",
-      "url": "http://server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/33",
+      "url": "//server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/33",
       "popup": "名称:{NAME}<br>地址:{address}",
       "symbol": {
         "styleOptions": {
@@ -451,7 +451,7 @@
       "pid": 3010,
       "name": "乡镇",
       "type": "arcgis_feature",
-      "url": "http://server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/39",
+      "url": "//server.mars2d.cn/arcgis/rest/services/mars/hefei/MapServer/39",
       "simplifyFactor": 0.35,
       "precision": 5,
       "popup": "all",
@@ -482,7 +482,7 @@
       "pid": 3020,
       "name": "建筑物",
       "type": "wfs",
-      "url": "http://server.mars2d.cn/geoserver/mars/ows",
+      "url": "//server.mars2d.cn/geoserver/mars/ows",
       "typeNS": "mars",
       "typeName": "hfjzw",
       "minZoom": 15,
@@ -502,7 +502,7 @@
       "pid": 3020,
       "name": "合肥区县界线",
       "type": "wfs",
-      "url": "http://server.mars2d.cn/geoserver/mars/ows",
+      "url": "//server.mars2d.cn/geoserver/mars/ows",
       "typeNS": "mars",
       "typeName": "hfbj",
       "geometryField": "the_geom",
@@ -520,7 +520,7 @@
       "pid": 3020,
       "name": "体育设施点",
       "type": "wfs",
-      "url": "http://server.mars2d.cn/geoserver/mars/ows",
+      "url": "//server.mars2d.cn/geoserver/mars/ows",
       "typeNS": "mars",
       "typeName": "hfty",
       "geometryField": "the_geom",

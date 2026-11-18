@@ -261,7 +261,9 @@ gulp.task("build", (done) => {
       default:
         gulp
           .src(srcFile, {
-            base: srcPath
+            base: srcPath,
+            // gulp5 的 gulp.src 默认按 utf8 读取，会把图片/字体等二进制文件转码损坏
+            encoding: false
           })
           .pipe(gulp.dest(outFilePath))
         break
@@ -343,7 +345,8 @@ function throwOnlyCopy(srcPath, pathname, outFilePath, message) {
   if (pathname && outFilePath) {
     gulp
       .src(pathname, {
-        base: srcPath
+        base: srcPath,
+        encoding: false
       })
       .pipe(gulp.dest(outFilePath))
   }

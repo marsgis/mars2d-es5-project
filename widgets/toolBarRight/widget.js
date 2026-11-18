@@ -50,8 +50,8 @@
       if (!haoutil.system.isPCBroswer() && arr.length == 3 && arr[0].children) {
         let item1 = arr.shift()
         let item2 = arr.shift()
-        arr[0].children.insert(item2, 0)
-        arr[0].children.insert(item1, 0)
+        arr[0].children.unshift(item2)
+        arr[0].children.unshift(item1)
       }
 
       this.initMenu(arr)

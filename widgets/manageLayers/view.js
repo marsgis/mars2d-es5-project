@@ -1,6 +1,4 @@
-﻿"use script" //开发环境建议开启严格模式
-
-//对应widget.js中MyWidget实例化后的对象
+﻿﻿//对应widget.js中MyWidget实例化后的对象
 let thisWidget
 let layers = []
 let layersObj = {}
@@ -202,7 +200,7 @@ function treeOverlays_onCheck(e, treeId, chktreeNode) {
       let nodes = treeObj.getNodesByFilter(
         function (node) {
           let item = layersObj[node.id]
-          return item.options.radio && item.pid == layer.pid && node.id != treeNode.id
+          return item && item.options.radio && item.pid == layer.pid && node.id != treeNode.id
         },
         false,
         treeNode.getParentNode()

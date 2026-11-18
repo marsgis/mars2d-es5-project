@@ -1,4 +1,14 @@
-﻿let thisWidget
+﻿﻿let thisWidget
+
+//转义HTML，避免配置名称被当作标签执行
+function escapeHtml(value) {
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+}
 
 //当前页面业务
 function initWidgetView(_thisWidget) {
@@ -18,7 +28,7 @@ function initWidgetView(_thisWidget) {
     let imgsrc = layer.options.icon || "img/basemaps/bingAerial.png"
 
     inhtml += `<li ${vhtml} onclick="changeBaseMaps(this,'${layer.id}')">
-      <div><img src="../../${imgsrc}" /></div><div>${layer.name}</div>
+      <div><img src="../../${imgsrc}" /></div><div>${escapeHtml(layer.name)}</div>
     </li>`
   }
   $("#basemaps").html(inhtml)

@@ -1,4 +1,3 @@
-"use script" //开发环境建议开启严格模式
 ;(function (window, mars2d) {
   //创建widget类，需要继承BaseWidget
   class MyWidget extends es5widget.BaseWidget {

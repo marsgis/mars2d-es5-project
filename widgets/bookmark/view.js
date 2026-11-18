@@ -1,4 +1,4 @@
-﻿let thisWidget
+﻿﻿let thisWidget
 let $table
 
 function getHeight() {
@@ -58,7 +58,12 @@ let arrBookmark = []
 function initBookMarkList() {
   let lastcookie = haoutil.cookie.get(cookieName) //读取cookie值
   if (lastcookie != null) {
-    arrBookmark = eval(lastcookie)
+    try {
+      arrBookmark = JSON.parse(lastcookie)
+    } catch (e) {
+      console.warn("书签缓存解析失败，已重置", e)
+      arrBookmark = []
+    }
   }
 
   if (arrBookmark == null || arrBookmark.length == 0) {

@@ -1,5 +1,14 @@
-"use script" //开发环境建议开启严格模式
 ;(function (window, mars2d) {
+  //转义HTML，避免接口数据被当作标签或属性执行
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
+  }
+
   //创建widget类，需要继承BaseWidget
   class MyWidget extends es5widget.BaseWidget {
     //外部资源配置
@@ -35,22 +44,22 @@
           return false
         }
 
-        let inHtml = `<div class="mars2d-template-titile"><a href="https://www.amap.com/detail/${item.id}"  target="_blank" style="color: #ffffff; ">${item.name}</a></div><div class="mars2d-template-content" >`
+        let inHtml = `<div class="mars2d-template-titile"><a href="https://www.amap.com/detail/${encodeURIComponent(item.id)}"  target="_blank" style="color: #ffffff; ">${escapeHtml(item.name)}</a></div><div class="mars2d-template-content" >`
 
         let phone = $.trim(item.tel)
         if (phone != "") {
-          inHtml += "<div><label>电话</label>" + phone + "</div>"
+          inHtml += "<div><label>电话</label>" + escapeHtml(phone) + "</div>"
         }
 
         let dz = $.trim(item.address)
         if (dz != "") {
-          inHtml += "<div><label>地址</label>" + dz + "</div>"
+          inHtml += "<div><label>地址</label>" + escapeHtml(dz) + "</div>"
         }
 
         if (item.type) {
           let fl = $.trim(item.type)
           if (fl != "") {
-            inHtml += "<div><label>类别</label>" + fl + "</div>"
+            inHtml += "<div><label>类别</label>" + escapeHtml(fl) + "</div>"
           }
         }
         inHtml += "</div>"
@@ -206,6 +215,20 @@
       $("#txt_querypoi").val(name)
       $("#btn_querypoi").trigger("click")
     }
+    //按索引回填智能提示，避免把名称拼进 javascript: 调用
+    autoSearchByIndex(index) {
+      let item = this.autoTipListData && this.autoTipListData[index]
+      if (item) {
+        this.autoSearch(item.name)
+      }
+    }
+    //按索引回填历史记录，避免把历史值拼进 javascript: 调用
+    autoSearchHistory(index) {
+      let name = this.arrHistory && this.arrHistory[index]
+      if (name) {
+        this.autoSearch(name)
+      }
+    }
 
     //===================与后台交互========================
 
@@ -231,12 +254,18 @@
         success: (result) => {
           let inhtml = ""
           let pois = result.list
+          this.autoTipListData = pois
           for (let index = 0; index < pois.length; index++) {
             let name = pois[index].name
             // var num = pois[index].num;
             // if (num > 0) continue;
 
-            inhtml += "<li><i class='fa fa-search'></i><a href=\"javascript:queryGaodePOIWidget.autoSearch('" + name + "');\">" + name + "</a></li>"
+            inhtml +=
+              "<li><i class='fa fa-search'></i><a href=\"javascript:queryGaodePOIWidget.autoSearchByIndex(" +
+              index +
+              ');">' +
+              escapeHtml(name) +
+              "</a></li>"
           }
           if (inhtml.length > 0) {
             $("#querybar_ul_autotip").html(inhtml)
@@ -309,7 +338,8 @@
 
       let inhtml = ""
       if (counts == 0) {
-        inhtml += '<div class="querybar-page"><div class="querybar-fl">没有找到"<strong>' + this.queryText + '</strong>"相关结果</div></div>'
+        inhtml +=
+          '<div class="querybar-page"><div class="querybar-fl">没有找到"<strong>' + escapeHtml(this.queryText) + '</strong>"相关结果</div></div>'
       } else {
         this.objResultData = this.objResultData || {}
         for (let index = 0; index < data.length; index++) {
@@ -321,9 +351,9 @@
 
           inhtml += `<div class="querybar-site" onclick="queryGaodePOIWidget.showDetail('${_id}')">
             <div class="querybar-sitejj">
-              <h3>${item.index}、${item.name}
-              <a id="btnShowDetail" href="https://www.amap.com/detail/${item.id}" target="_blank" class="querybar-more">更多&gt;</a> </h3>
-              <p> ${item.address || ""}</p>
+              <h3>${item.index}、${escapeHtml(item.name)}
+              <a id="btnShowDetail" href="https://www.amap.com/detail/${encodeURIComponent(item.id)}" target="_blank" class="querybar-more">更多&gt;</a> </h3>
+              <p> ${escapeHtml(item.address || "")}</p>
             </div>
           </div> `
 
@@ -528,7 +558,12 @@
         let inhtml = ""
         for (let index = this.arrHistory.length - 1; index >= 0; index--) {
           let item = this.arrHistory[index]
-          inhtml += "<li><i class='fa fa-history'/><a href=\"javascript:queryGaodePOIWidget.autoSearch('" + item + "');\">" + item + "</a></li>"
+          inhtml +=
+            "<li><i class='fa fa-history'/><a href=\"javascript:queryGaodePOIWidget.autoSearchHistory(" +
+            index +
+            ');">' +
+            escapeHtml(item) +
+            "</a></li>"
         }
         $("#querybar_ul_history").html(inhtml)
         $("#querybar_histroy_view").show()
